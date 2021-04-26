@@ -1,0 +1,25 @@
+{
+  "name": "tastemaking",
+  "version": "1.0.0",
+  "description": "discover and interact with trends in your music taste",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/confy/tastemaking.git"
+  },
+  "author": "confy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/confy/tastemaking/issues"
+  },
+  "homepage": "https://github.com/confy/tastemaking#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-spotify": "^2.0.0"
+  }
+}
