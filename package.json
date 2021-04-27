@@ -4,7 +4,8 @@
   "description": "discover and interact with trends in your music taste",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,14 @@
   },
   "homepage": "https://github.com/confy/tastemaking#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
-    "passport-spotify": "^2.0.0"
+    "passport-spotify": "^2.0.0",
+    "path": "^0.12.7",
+    "spotify-web-api-node": "^5.0.2"
   }
 }
