@@ -1,25 +1,30 @@
-const passport = require("passport");
-const SpotifyStrategy = require('passport-spotify').Strategy;
 const userController = require('../controllers/userController')
 
-passport.use(
-  new SpotifyStrategy(
-    {
-      clientID: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: 'http://localhost:8080/auth/spotify/callback',
-    },
+const passport = require("passport");
+const refresh = require('passport-oauth2-refresh');
 
-    function (accessToken, refreshToken, expires_in, profile, done) {
-      console.log(accessToken, refreshToken)
-      // asynchronous verification, for effect...
-      process.nextTick(function () {
-        userController.findOrCreate(profile, accessToken, refreshToken)
-        return done(null, profile);
-      });
-    }
-  )
-);
+const SpotifyStrategy = require('passport-spotify').Strategy;
+
+
+
+
+strategy =  new SpotifyStrategy(
+  {
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: 'http://localhost:8080/auth/spotify/callback',
+  },
+
+  function (accessToken, refreshToken, expires_in, profile, done) {
+    console.log(accessToken, refreshToken)
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+      userController.findOrCreate(profile, accessToken, refreshToken)
+      return done(null, profile);
+    });
+  }
+)
+passport.use(strategy);
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -34,4 +39,5 @@ passport.deserializeUser(function (id, done) {
   }
 });
 
-module.exports = passport.use(SpotifyStrategy);
+module.exports = passport.use(SpotifyStrategy)
+  

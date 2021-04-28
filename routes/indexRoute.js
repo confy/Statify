@@ -54,16 +54,21 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
 })
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
     spotifyApi.setAccessToken(req.user.accessToken);
-    let topArtists = null
-    spotifyApi.getMyTopArtists()
+    spotifyApi.getMyTopArtists({
+        "limit": 50
+    })
         .then(function (data) {
             topArtists = data.body.items;
             console.log(topArtists);
-            res.send(JSON.stringify(topArtists))
+            let artistGenres = data.body.items.map(artist => artist.genres)
+            let artists = data.body.items.map(artist => artist.name)
+            artistGenres = artistGenres.flat(4)
+            res.render("genres", { genres: artistGenres, artists: artists })
         }, function (err) {
             console.log('Something went wrong!', err);
-        });
-    
+        })
+
+
 })
 
 router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
@@ -77,6 +82,6 @@ router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
         }, function (err) {
             console.log('Something went wrong!', err);
         });
-    
+
 })
 module.exports = router
