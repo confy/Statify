@@ -1,4 +1,6 @@
 const users = require("../database").users;
+const {flag, code, name, countries} = require('country-emoji');
+
 
 const userModel = {
     findUserByID: (id) => {
@@ -12,6 +14,8 @@ const userModel = {
     createUser: (user, accessToken, refreshToken) => {
         users[user.id] = {
             id: user.id,
+            country: name(user.country),
+            flagEmoji: flag(user.flag),
             name: user.displayName,
             profileUrl: user.profileUrl,
             profilePic: user.photos[0].value,

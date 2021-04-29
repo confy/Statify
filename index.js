@@ -32,7 +32,9 @@ app.use(passport.session());
 
 
 const indexRoute = require("./routes/indexRoute");
+const authRoute = require("./routes/authRoute");
 app.use("/", indexRoute)
+app.use("/auth", authRoute)
 
 
 app.listen(process.env.PORT, function() {
