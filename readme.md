@@ -1,4 +1,4 @@
-# *tastemaking*
+# *Statify*
 
 A webapp that lets you discover and interact with trends in your music taste
 
