@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { ensureAuthenticated } = require("../middleware/checkAuth");
-
+const userController = require("../controllers/userController").userController
 
 
 
@@ -23,23 +23,29 @@ router.get('/', function (req, res) {
 })
 
 router.get('/profile', ensureAuthenticated, function (req, res) {
-    res.render('profile', {user: req.user})
+    const user = userController.getUserById(req.user.id)
+    let dataExists = Object.keys(user).includes("data")
+    if (dataExists) {
+        return res.render('profile', { user: req.user })
+    } else {
+        spotifyApi.setAccessToken(req.user.accessToken);
+        spotifyApi.getMyTopArtists({
+            "limit": 50
+        })
+            .then(function (data) {
+                user["data"] = { "artists": data.body.items }
+                console.log(data.body.items);
+                res.render("profile", { user: user })
+            }, function (err) {
+                console.log('Something went wrong fetching artist data!', err);
+            })
+    }
 })
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
-    spotifyApi.setAccessToken(req.user.accessToken);
-    spotifyApi.getMyTopArtists({
-        "limit": 50
-    })
-        .then(function (data) {
-            topArtists = data.body.items;
-            console.log(topArtists);
-            let artistGenres = data.body.items.map(artist => artist.genres)
-            let artists = data.body.items.map(artist => artist.name)
-            artistGenres = artistGenres.flat(4)
-            res.render("genres", { genres: artistGenres, artists: artists })
-        }, function (err) {
-            console.log('Something went wrong!', err);
-        })
+    const user = userController.getUserByID(req.user.id)
+    res.render('artists', { artists: user.artists })
+
+
 
 
 })

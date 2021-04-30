@@ -19,8 +19,14 @@ const userModel = {
             name: user.displayName,
             profileUrl: user.profileUrl,
             profilePic: user.photos[0].value,
+            followers: user.followers,
+            artists: {},
+            tracks: {},
+            
+            //remove eventually
             accessToken: accessToken,
             refreshToken: refreshToken
+
         }
         return users[user.id]
     }

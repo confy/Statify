@@ -1,7 +1,6 @@
-const userController = require('../controllers/userController')
+const userController = require('../controllers/userController').userController
 
 const passport = require("passport");
-const refresh = require('passport-oauth2-refresh');
 
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
