@@ -19,7 +19,7 @@ module.exports = router;
 
 
 router.get('/', function (req, res) {
-    res.send("Homepage")
+    res.render('homepage')
 })
 
 router.get('/profile', ensureAuthenticated, function (req, res) {
