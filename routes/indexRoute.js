@@ -50,6 +50,28 @@ router.get('/profile/artists', ensureAuthenticated, function (req, res) {
 
 })
 
+router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
+    spotifyApi.setAccessToken(req.user.accessToken)
+    let trackInfo = spotifyApi.getTrack(req.params.trackid)
+        .then(function (data) {
+            return data.body
+        })
+    let trackFeatures = spotifyApi.getAudioFeaturesForTrack(req.params.trackid)
+        .then(function (data) {
+            return data.body
+
+        }, function (err) {
+            console.log(err);
+        });
+    Promise.all([trackInfo, trackFeatures]).then((data) => {
+        console.log(data)
+        res.render('track', { trackInfo: data['0'], trackFeatures: data['1']})
+
+    })
+
+
+})
+
 router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
     spotifyApi.setAccessToken(req.user.accessToken);
     let resData = null
