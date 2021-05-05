@@ -34,7 +34,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
             "limit": 50
         })
             .then(function (data) {
-                user["data"] = { "artists": data.body.items }
+                user["artists"] = data.body.items 
                 console.log(user);
                 res.render("profile", { user: user })
             }, function (err) {
