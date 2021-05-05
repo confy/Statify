@@ -2,4 +2,12 @@
 <p>Id <%=user.id%></p>
 <p>country <%=user.country%></p>
 <a href="<%=user.profileUrl%>">Link to Profile</a>
-<img src="<%=user.profilePic%>" alt="<%=user.name%>">
+
+<!-- If the user has a profile picture display it -->
+<% if (user.profilePic) { %>
+    <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
+
+<!-- Otherwise display a placeholder image. -->
+<% } else { %>
+    <img src="images/placeholder_pic.png" alt="<%=user.name%>">
+<% } %>

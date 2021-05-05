@@ -18,7 +18,7 @@ const userModel = {
             flagEmoji: flag(user.flag),
             name: user.displayName,
             profileUrl: user.profileUrl,
-            profilePic: user.photos[0].value,
+            profilePic: user.photos[0],
             followers: user.followers,
             artists: {},
             tracks: {},

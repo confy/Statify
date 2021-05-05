@@ -1,4 +1,4 @@
-const userController = require('../controllers/userController').userController
+const userController = require('../controllers/userController');
 
 const passport = require("passport");
 

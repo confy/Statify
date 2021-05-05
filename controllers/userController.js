@@ -17,4 +17,4 @@ const userController = {
         return null
     }
 }
-module.exports = {userController: userController}
+module.exports = userController;

@@ -1,0 +1,14 @@
+<!-- If the dictionary artists is not empty, print each artists -->
+<% if (Object.keys(artists).length != 0 ) { %>
+    <% Object.entries(artists).forEach(function (artist) { %>
+        <!-- Dictionary Key-->
+        <%=artist[0]%>
+        <!-- Dictionary Value -->
+        <%=artist[1]%>
+    <% }) %>
+    It works
+
+<!-- Otherwise say no artists found -->
+<% } else { %>
+    Your artists are empty!!!
+<% } %>
