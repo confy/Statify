@@ -34,7 +34,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
             "limit": 50
         })
             .then(function (data) {
-                user["artists"] = data.body.items 
+                user["artists"] = data.body.items
                 console.log(user);
                 res.render("profile", { user: user })
             }, function (err) {
@@ -63,7 +63,7 @@ router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
         });
     Promise.all([trackInfo, trackFeatures]).then((data) => {
         console.log(data)
-        res.render('track', { trackInfo: data['0'], trackFeatures: data['1']})
+        res.render('track', { trackInfo: data['0'], trackFeatures: data['1'] })
 
     })
 
@@ -73,11 +73,14 @@ router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
 router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
     spotifyApi.setAccessToken(req.user.accessToken);
     let resData = null
-    spotifyApi.getMyTopTracks()
+    spotifyApi.getMyTopTracks({
+        "limit": 50
+    })
         .then(function (data) {
             resData = data.body.items;
             console.log(resData);
-            res.send(JSON.stringify(resData))
+            //res.send(JSON.stringify(resData))
+            res.render('tracks', { tracks: resData })
         }
             , function (err) {
                 console.log('Something went wrong!', err);
