@@ -13,12 +13,11 @@
     </div>
 </section>
 <div class="container">
-    <table class="table">
+    <table class="table" id="artistTopTracks">
         <thead>
             <tr>
                 <th>Rank</th>
                 <th>Track Name</th>
-                <th>Artist</th>
                 <th>Album</th>
                 <th>Popularity</th>
                 <th>Link</th>
@@ -32,10 +31,7 @@
                         <%= Number(track[0]) + 1 %>
                     </td>
                     <td>
-                        <%= track[1].name %>
-                    </td>
-                    <td>
-                        <%= track[1].artists[0].name %>
+                        <a href="/track/<%= track[1].id %>"><%= track[1].name %></a>
                     </td>
                     <td>
                         <%= track[1].album.name %>

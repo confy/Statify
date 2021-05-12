@@ -17,7 +17,7 @@
                 <% Object.entries(artists).forEach(function (artist) { %>
                         <div class="col-md-4">
                           <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="<%= artist[1].images[0].url%>" alt="<%=artist[1].name %>">
+                            <a href="/artist/<%= artist[1].id %>"><img class="card-img-top" src="<%= artist[1].images[0].url%>" alt="<%=artist[1].name %>"></a>
                             <div class="card-body">
                               <p class="card-text"><b> <%= artist[1].name %></b></p>
                               <p class="card-text"> <%= artist[1].genres %></p>
