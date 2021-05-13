@@ -26,7 +26,6 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
     const user = userController.getUserById(req.user.id)
     let dataExists = Object.keys(user).includes("data")
     if (dataExists) {
-        console.log(req.user.ProfilePic)
         return res.render('profile', { user: req.user })
     } else {
         spotifyApi.setAccessToken(req.user.accessToken);
@@ -46,6 +45,29 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
     const user = userController.getUserById(req.user.id)
     res.render('artists', { artists: user.artists })
+})
+
+
+router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
+    spotifyApi.setAccessToken(req.user.accessToken)
+    let artistID = req.params.artistid
+    let artistInfo = spotifyApi.getArtist(artistID)
+        .then(function (data) {
+            return data.body
+        })
+    let artistTopTracks = spotifyApi.getArtistTopTracks(artistID, country='CA')
+        .then(function (data) {
+            return data.body
+        })
+    let artistAlbums = spotifyApi.getArtistAlbums(artistID)
+        .then(function (data) {
+            return data.body
+        })
+    Promise.all([artistInfo, artistTopTracks, artistAlbums]).then((data) => {
+        console.log(data)
+        res.render('artist', {artist: data[0], artistTopTracks: data[1].tracks, artistAlbums: data[2].items})
+
+    })
 })
 
 router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
