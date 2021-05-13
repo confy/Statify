@@ -8,16 +8,12 @@ const constants = {
 // Count Occurrences
 test("Count occurences of a list of strings", () => {
     expect(dataController.countOccurences(constants.wordList)).toEqual(constants.wordCount)
-})
-
-test("Received argument should be a list", () => {
+    expect(() => {
+        dataController.countOccurences(constants.errorList)
+    }).toThrow(TypeError)
     expect(() => {
         dataController.countOccurences(5)
     }).toThrow(TypeError)
 })
 
-test("List should only contain strings", () => {
-    expect(() => {
-        dataController.countOccurences(constants.errorList)
-    }).toThrow(TypeError)
-})
+test("")
