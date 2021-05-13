@@ -18,8 +18,8 @@
             <% Object.entries(tracks).forEach((track)=> { %>
                 <tr>
                     <td><%= Number(track[0]) + 1 %></td>
-                    <td><%= track[1].name %></td>
-                    <td><%= track[1].artists[0].name %></td>
+                    <td><a href="/track/<%= track[1].id %>"><%= track[1].name %></a></td>
+                    <td><a href="/artist/<%= track[1].artists[0].id %>"><%= track[1].artists[0].name %></a></td>
                     <td><%= track[1].album.name %></td>
                     <td><%= track[1].popularity %></td>
                     <td><a href="<%= track[1].external_urls.spotify %>">Link</a></td>
