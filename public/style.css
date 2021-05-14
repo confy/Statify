@@ -111,16 +111,16 @@ nav {
 
 .profilepagebodytext {
     text-align: left;
-    padding-top: 10px;
-    padding-left: 350px;
+    padding-top: 80px;
+    padding-left: 320px;
     font-weight: bold;
 
 }
 .profilepagebodyimg {
     text-align: center;
     float: left;
-    padding-top: 10px;
-    padding-left: 10px;
+    padding-top: 80px;
+    padding-left: 0px;
 }
 
 @media only screen and (max-width: 600px) {
