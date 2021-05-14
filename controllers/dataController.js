@@ -31,7 +31,7 @@ const dataController = {
         if (typeof feature !== 'string') {
             throw new TypeError
         }
-        if (typeof number !== 'number'){
+        if (typeof number !== 'number') {
             throw new TypeError
         }
         if (number < 1) {
@@ -47,7 +47,7 @@ const dataController = {
         if (typeof tracks !== 'object') {
             throw new TypeError
         }
-        if (typeof number !== 'number'){
+        if (typeof number !== 'number') {
             throw new TypeError
         }
         if (number < 1) {
@@ -58,6 +58,25 @@ const dataController = {
             sortedTracks[feature] = dataController.getTopTracksWithFeature(tracks, feature, number)
         })
         return sortedTracks
+    },
+
+    keys: ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"],
+    
+    getSongKey: (keyNumber) => {
+        let keys = dataController.keys
+        if (typeof keyNumber != 'number') {
+            throw new TypeError
+        }
+        if (keyNumber < 0 | keyNumber > 11) {
+            throw new RangeError
+        }
+        let relativeMin = 0
+        if (keyNumber < 3) {
+            relativeMin = keyNumber + 9
+        } else {
+            relativeMin = keyNumber - 3
+        }
+        return `${keys[keyNumber]} Maj or ${keys[relativeMin]} Min`
     }
 }
 

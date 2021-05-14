@@ -23,16 +23,16 @@ test("Count occurences - Error on bad values", () => {
     }).toThrow(TypeError)
 })
 
-const mockUser = JSON.parse(fs.readFileSync('user.json'))
-const top_time_signature = JSON.parse(fs.readFileSync('gizzard.json'))
-const topTracksAllFeatures = JSON.parse(fs.readFileSync('topTracksAllFeatures.json'))
+const mockUser = JSON.parse(fs.readFileSync('tests/data/user.json'))
+const top_time_signature = JSON.parse(fs.readFileSync('tests/data/gizzard.json'))
+const topTracksAllFeatures = JSON.parse(fs.readFileSync('tests/data/topTracksAllFeatures.json'))
 
 test("Get top track with feature: time_signature", () => {
     expect(dataController.getTopTracksWithFeature(mockUser.tracks, 'time_signature', 1)).toEqual(top_time_signature)
 })
 
 test("Raise error on unknown track feature or number < 1", () => {
-    expect(() =>{
+    expect(() => {
         dataController.getTopTracksWithFeature(mockUser.tracks, 'fake_feature', 1)
     }).toThrow(RangeError)
     expect(() => {
@@ -41,18 +41,34 @@ test("Raise error on unknown track feature or number < 1", () => {
 })
 
 test("Get top tracks of all features", () => {
-    const mockUser = JSON.parse(fs.readFileSync('user.json'))
+    const mockUser = JSON.parse(fs.readFileSync('tests/data/user.json'))
     expect(dataController.getTopTracksAllFeatures(mockUser.tracks, 1)).toEqual(topTracksAllFeatures)
 })
 
 test("Top Tracks of all features - Error on invalid types or number", () => {
-    expect(()=>{
+    expect(() => {
         dataController.getTopTracksAllFeatures('bad_type', 1)
     }).toThrow(TypeError)
-    expect(()=>{
+    expect(() => {
         dataController.getTopTracksAllFeatures(mockUser.tracks, -1)
     }).toThrow(RangeError)
-    expect(()=>{
+    expect(() => {
         dataController.getTopTracksAllFeatures(mockUser.tracks, 'bad_type')
     }).toThrow(TypeError)
+})
+
+test("Get Key from 0-12 function", () => {
+    expect(dataController.getSongKey(0)).toEqual('C Maj or A Min')
+    expect(dataController.getSongKey(2)).toEqual('D Maj or B Min')
+    expect(dataController.getSongKey(11)).toEqual('B Maj or A♭ Min')
+})
+
+test("Get Key - Error on value out of range", () => {
+    expect(() => {
+        dataController.getSongKey(-1)
+    }).toThrow(RangeError)
+    expect(() => {
+        dataController.getSongKey(12)
+    }).toThrow(RangeError)
+    
 })

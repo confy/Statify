@@ -1,70 +1,90 @@
-<p>
-    <%= Object.entries(trackFeatures) %>
-</p>
-<p>
-    <%= Object.entries(trackInfo) %>
-</p>
-<h4>
-    <%= trackInfo.name%>
-</h4>
-<h4>
-    <%= trackInfo.album.name %>
-</h4>
-<h4>
-    <%= trackInfo.popularity %>
-</h4>
-<h4>
-    <%= trackInfo.track_number %>
-</h4>
-<h4>
-    <%= trackFeatures.tempo %>
-</h4>
-<h4>
-    <%= trackFeatures.danceability %>
-</h4>
+<section class="jumbotron text-center">
+    <div class="container">
+        <img src="<%=trackInfo.album.images[1].url%>" alt="..." class="img-thumbnail">
+        <h1>
+            <%= trackInfo.name%>
+        </h1>
+        <h2 class="lead">
+            Artist: <%= trackInfo.artists[0].name %>
+        </h2>
+        <h2 class="lead">
+            Album: <%= trackInfo.album.name %>
+        </h2>
+        <h2 class="lead">Track #<%= trackInfo.track_number %></h2>
+
+    </div>
+</section>
+
 <div class="container">
-<ul class="list-group">
-<li class="list-group-item">
-<p class ="lead">Danceability</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.danceability * 100 %>%;" aria-valuenow="<%= trackFeatures.danceability * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.danceability %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Energy</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.energy * 100 %>%;" aria-valuenow="<%= trackFeatures.energy * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.energy %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Speechiness</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.speechiness * 100 %>%;" aria-valuenow="<%= trackFeatures.speechiness * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.speechiness %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Acousticness</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.acousticness * 100 %>%;" aria-valuenow="<%= trackFeatures.acousticness * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.acousticness %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Instrumentalness</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.instrumentalness * 100 %>%;" aria-valuenow="<%= trackFeatures.instrumentalness * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.instrumentalness %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Liveness</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.liveness * 100 %>%;" aria-valuenow="<%= trackFeatures.liveness * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.liveness %></div>
-</div>
-</li>
-<li class="list-group-item">
-<p class ="lead">Valence</p>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.valence * 100 %>%;" aria-valuenow="<%= trackFeatures.valence * 100 %>" aria-valuemin="0" aria-valuemax="100"><%=trackFeatures.valence %></div>
-</div>
-</li>
-</ul>
+    <ul class="list-group">
+        <li class="list-group-item lead">Popularity: <%= trackInfo.popularity %></li>
+        <li class="list-group-item lead">Tempo: <%= trackFeatures.tempo %></li>
+        <li class="list-group-item lead">Time Signature: <%= trackFeatures.time_signature %>/4</li>
+        <li class="list-group-item lead">Key: <%= trackFeatures.key %></li>
+        <li class="list-group-item">
+            <p class="lead">Danceability</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.danceability * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.danceability * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.danceability %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Energy</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.energy * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.energy * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.energy %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Speechiness</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.speechiness * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.speechiness * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.speechiness %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Acousticness</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.acousticness * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.acousticness * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.acousticness %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Instrumentalness</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                    style="width: <%= trackFeatures.instrumentalness * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.instrumentalness * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.instrumentalness %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Liveness</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.liveness * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.liveness * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.liveness %>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <p class="lead">Valence</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.valence * 100 %>%;"
+                    aria-valuenow="<%= trackFeatures.valence * 100 %>" aria-valuemin="0" aria-valuemax="100">
+                    <%=trackFeatures.valence %>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <br>
 </div>

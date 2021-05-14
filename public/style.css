@@ -80,24 +80,24 @@ footer {
     color: white;
 }
 
-nav {
+/* nav {
     background-color: #003E6B;
     width: 100 wh;
     height: 50px;
     position: sticky;
-}
+} */
 
 .maincontainer {
     position:fixed;
     top: 50%;
-    left: 50%;
-    margin-top: -150px;
-    margin-left: -2030px;
+    left: 35%;
+    margin-top: 0.3vh;
+    margin-left: 0.3vh;
 }
-img {
+/* img {
     width: 150px;
     height: 150px;
-
+} */
 .profilepagebodytext {
     text-align: left;
     padding-top: 80px;
@@ -116,17 +116,17 @@ img {
     height: 500px;
     object-position: right;
 }
-p {
+/* p {
     color: black;
     font-family:'Times New Roman', Times, serif;
     font-size: 20px;
-}
+} */
 
 
 @media only screen and (max-width: 600px) {
-    img { width: 150px;
+    /* img { width: 150px;
         height: 150px;
-    }
+    } */
     .profilepagebodytext {
         padding-left: 230px;
     }

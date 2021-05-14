@@ -104,6 +104,7 @@ router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
         });
     Promise.all([trackInfo, trackFeatures]).then((data) => {
         console.log(data)
+        data['1'].key = dataController.getSongKey(data['1'].key)
         res.render('track', { trackInfo: data['0'], trackFeatures: data['1'] })
 
     })
