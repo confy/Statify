@@ -15,6 +15,12 @@ const userController = {
             return users[id]
         }
         return null
+    },
+    bindTrackFeatures: (id, features) => {
+        let user = userController.getUserById(id, features)
+        for (let i = 0; i < features.length; i++) {
+            user.tracks[i].features = features[i]
+        }
     }
 }
 module.exports = userController;

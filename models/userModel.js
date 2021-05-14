@@ -20,10 +20,6 @@ const userModel = {
             profileUrl: user.profileUrl,
             profilePic: user.photos[0],
             followers: user.followers,
-            artists: {},
-            tracks: {},
-            
-            //remove eventually
             accessToken: accessToken,
             refreshToken: refreshToken
 
