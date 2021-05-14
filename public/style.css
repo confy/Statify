@@ -2,6 +2,14 @@ body {
     background-color: #92a8d1;
 }
 
+.maincontainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+}
+
 /* h1 {
     font-size: 5rem;
     font-family: Georgia, 'Times New Roman', Times, sans-serif;
@@ -111,10 +119,12 @@ footer {
     padding-top: 10px;
     padding-left: 10px;
 }
+
 .vl {
     border-left: 6px solid;
     height: 500px;
     object-position: right;
+
 }
 /* p {
     color: black;
@@ -130,4 +140,8 @@ footer {
     .profilepagebodytext {
         padding-left: 230px;
     }
+}
+
+.logoimg {
+    float: left
 }
