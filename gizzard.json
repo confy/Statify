@@ -1,0 +1,113 @@
+[
+    {
+        "album": {
+            "album_type": "ALBUM",
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6XYvaoDGE0VmRt83Jss9Sn"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6XYvaoDGE0VmRt83Jss9Sn",
+                    "id": "6XYvaoDGE0VmRt83Jss9Sn",
+                    "name": "King Gizzard & The Lizard Wizard",
+                    "type": "artist",
+                    "uri": "spotify:artist:6XYvaoDGE0VmRt83Jss9Sn"
+                }
+            ],
+            "available_markets": [
+                "CA"
+            ],
+            "external_urls": {
+                "spotify": "https://open.spotify.com/album/7bsjvrxKJiAV9U2iY6XX9c"
+            },
+            "href": "https://api.spotify.com/v1/albums/7bsjvrxKJiAV9U2iY6XX9c",
+            "id": "7bsjvrxKJiAV9U2iY6XX9c",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab67616d0000b2732b27c4ce4d3e4bcdb0ad0b5a",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/ab67616d00001e022b27c4ce4d3e4bcdb0ad0b5a",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/ab67616d000048512b27c4ce4d3e4bcdb0ad0b5a",
+                    "width": 64
+                }
+            ],
+            "name": "Sketches of Brunswick East (feat. Mild High Club)",
+            "release_date": "2017-08-18",
+            "release_date_precision": "day",
+            "total_tracks": 13,
+            "type": "album",
+            "uri": "spotify:album:7bsjvrxKJiAV9U2iY6XX9c"
+        },
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6XYvaoDGE0VmRt83Jss9Sn"
+                },
+                "href": "https://api.spotify.com/v1/artists/6XYvaoDGE0VmRt83Jss9Sn",
+                "id": "6XYvaoDGE0VmRt83Jss9Sn",
+                "name": "King Gizzard & The Lizard Wizard",
+                "type": "artist",
+                "uri": "spotify:artist:6XYvaoDGE0VmRt83Jss9Sn"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5J81VungUjSVHxlPpTI9KG"
+                },
+                "href": "https://api.spotify.com/v1/artists/5J81VungUjSVHxlPpTI9KG",
+                "id": "5J81VungUjSVHxlPpTI9KG",
+                "name": "Mild High Club",
+                "type": "artist",
+                "uri": "spotify:artist:5J81VungUjSVHxlPpTI9KG"
+            }
+        ],
+        "available_markets": [
+            "CA"
+        ],
+        "disc_number": 1,
+        "duration_ms": 210840,
+        "explicit": false,
+        "external_ids": {
+            "isrc": "AUTZK1700063"
+        },
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/3VgGVv1VnZwr08pSEFnzmV"
+        },
+        "features": {
+            "acousticness": 0.0653,
+            "analysis_url": "https://api.spotify.com/v1/audio-analysis/3VgGVv1VnZwr08pSEFnzmV",
+            "danceability": 0.381,
+            "duration_ms": 210840,
+            "energy": 0.795,
+            "id": "3VgGVv1VnZwr08pSEFnzmV",
+            "instrumentalness": 0.0000583,
+            "key": 2,
+            "liveness": 0.734,
+            "loudness": -7.859,
+            "mode": 1,
+            "speechiness": 0.0759,
+            "tempo": 151.193,
+            "time_signature": 5,
+            "track_href": "https://api.spotify.com/v1/tracks/3VgGVv1VnZwr08pSEFnzmV",
+            "type": "audio_features",
+            "uri": "spotify:track:3VgGVv1VnZwr08pSEFnzmV",
+            "valence": 0.242
+        },
+        "href": "https://api.spotify.com/v1/tracks/3VgGVv1VnZwr08pSEFnzmV",
+        "id": "3VgGVv1VnZwr08pSEFnzmV",
+        "is_local": false,
+        "name": "Tezeta",
+        "popularity": 20,
+        "preview_url": "https://p.scdn.co/mp3-preview/55ba309761617cdbf286617aa25bd446ece6aeea?cid=ac2db2d06da04b28a8ad0206b11e0df2",
+        "track_number": 4,
+        "type": "track",
+        "uri": "spotify:track:3VgGVv1VnZwr08pSEFnzmV"
+    }
+]
