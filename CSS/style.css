@@ -1,6 +1,9 @@
 body {
     background-color:#92a8d1;
 }
+.dark-mode {
+    background-color:white;
+}
 h1{
     font-size: 40px;
     font-family: Georgia, 'Times New Roman', Times, sans-serif;
@@ -83,4 +86,7 @@ footer{
     'a  b';
     width: 100vw;
     height: 100vh;
+}
+.dark-mode {
+    background-color: black;
 }
