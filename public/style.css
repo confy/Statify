@@ -3,12 +3,15 @@ body {
 }
 
 .maincontainer {
-    position: fixed;
+    position:fixed;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
-    margin-left: -100px;
+    margin-top: -150px;
+    margin-left: -2030px;
 }
+img {
+    width: 150px;
+    height: 150px;
 
 }
 .profilepagebodytext {
@@ -24,13 +27,21 @@ body {
     padding-top: 10px;
     padding-left: 10px;
 }
+.vl {
+    border-left: 6px solid;
+    height: 500px;
+    object-position: right;
+}
 p {
     color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 
+
 @media only screen and (max-width: 600px) {
-    img { width: 200px;
-        height: 200px;
+    img { width: 150px;
+        height: 150px;
     }
     .profilepagebodytext {
         padding-left: 230px;
