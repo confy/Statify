@@ -7,10 +7,9 @@ body {
     top: 50%;
     left: 50%;
     margin-top: -50px;
-    margin-left: -100px;
+    margin-left: -150px;
 }
 
-}
 .profilepagebodytext {
     text-align: left;
     padding-top: 10px;
@@ -26,6 +25,7 @@ body {
 }
 p {
     color: black;
+    margin:5px
 }
 
 @media only screen and (max-width: 600px) {
@@ -35,4 +35,8 @@ p {
     .profilepagebodytext {
         padding-left: 230px;
     }
+}
+
+.logoimg {
+    float: left
 }
