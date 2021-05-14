@@ -25,31 +25,20 @@ const dataController = {
     ],
 
     getTopTracksWithFeature: (tracks, feature, number) => {
-        if (typeof tracks !== 'object') {
+        if (typeof tracks !== 'object' | typeof feature !== 'string' | typeof number !== 'number') {
             throw new TypeError
         }
-        if (typeof feature !== 'string') {
-            throw new TypeError
-        }
-        if (typeof number !== 'number') {
-            throw new TypeError
-        }
-        if (number < 1) {
+        if (number < 1 | !(dataController.features.includes(feature))) {
             throw new RangeError
         }
-        if (!(dataController.features.includes(feature))) {
-            throw new RangeError
-        }
-        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).splice(0, 1)
+        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).splice(0, number)
     },
 
     getTopTracksAllFeatures: (tracks, number) => {
-        if (typeof tracks !== 'object') {
+        if (typeof tracks !== 'object' | typeof number !== 'number') {
             throw new TypeError
         }
-        if (typeof number !== 'number') {
-            throw new TypeError
-        }
+
         if (number < 1) {
             throw new RangeError
         }

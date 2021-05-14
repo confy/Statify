@@ -63,12 +63,15 @@ test("Get Key from 0-12 function", () => {
     expect(dataController.getSongKey(11)).toEqual('B Maj or A♭ Min')
 })
 
-test("Get Key - Error on value out of range", () => {
+test("Get Key - Error on value out of range or bad type", () => {
     expect(() => {
         dataController.getSongKey(-1)
     }).toThrow(RangeError)
     expect(() => {
         dataController.getSongKey(12)
     }).toThrow(RangeError)
+    expect(() => {
+        dataController.getSongKey('bad_type')
+    }).toThrow(TypeError)
     
 })
