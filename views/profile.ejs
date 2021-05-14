@@ -1,22 +1,25 @@
 <body>
-    <div class="container">
-        <div class="profilepagebodyimg">
-            <!-- If the user has a profile picture display it -->
-            <% if (user.profilePic) { %>
-                <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
-                
-            <!-- Otherwise display a placeholder image. -->
-            <% } else { %>
-                <img src="images/placeholder_pic.png" alt="<%=user.name%>">
-            <% } %>
-        </div>
-        <div class="profilepagebodytext container">
-            <br>
-            <p>Name: <%=user.name%></p>
-            <p>Id: <%=user.id%></p>
-            <p><%= user.followers %> followers</p>
-            <p>Country: <%=user.country%></p>
-            <a href="<%=user.profileUrl%>">Link to Profile</a>
-        </div>
-    </div>
+<div class="container">
+<div class="profilepagebodyimg">
+    <!-- If the user has a profile picture display it -->
+    <% if (user.profilePic) { %>
+        <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
+        
+    <!-- Otherwise display a placeholder image. -->
+    <% } else { %>
+        <img src="images/placeholder_pic.png" alt="<%=user.name%>">
+    <% } %>
+    
+</div>
+<div class="profilepagebodytext container">
+<h1> Profile</h1>
+<p>Name: <%=user.name%></p>
+<p>Id: <%=user.id%></p>
+<p><%= user.followers %> followers</p>
+<p>Country: <%=user.country%></p>
+<a href="<%=user.profileUrl%>">Link to Profile</a>
+</div>
+</div>
+
+
 </body>

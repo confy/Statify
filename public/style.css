@@ -88,26 +88,15 @@ nav {
 }
 
 .maincontainer {
-    margin-top: calc(50vh - 177px);
-    margin-left: calc(50vw - 358.5px);
-}
-
-.homepage-h1 {
-    font-size: 5rem;
-    font-family: Georgia, 'Times New Roman', Times, sans-serif;
-}
-
-.homepage-pre {
-    font-size: 20px;
-}
-
-/* .maincontainer {
-    position: fixed;
+    position:fixed;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
-    margin-left: -100px;
-} */
+    margin-top: -150px;
+    margin-left: -2030px;
+}
+img {
+    width: 150px;
+    height: 150px;
 
 .profilepagebodytext {
     text-align: left;
@@ -119,13 +108,24 @@ nav {
 .profilepagebodyimg {
     text-align: center;
     float: left;
-    padding-top: 80px;
-    padding-left: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.vl {
+    border-left: 6px solid;
+    height: 500px;
+    object-position: right;
+}
+p {
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 
+
 @media only screen and (max-width: 600px) {
-    img { width: 200px;
-        height: 200px;
+    img { width: 150px;
+        height: 150px;
     }
     .profilepagebodytext {
         padding-left: 230px;
