@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const dataController = require("../controllers/dataController")
 const constants = {
     wordList: ["Testing", "is", "important", "it", "seriously", "is", "important"],
@@ -5,9 +7,14 @@ const constants = {
     errorList: ["Testing", "is", "important", "until", 1, 2, "it", "breaks"]
 }
 
+
+
 // Count Occurrences
 test("Count occurences of a list of strings", () => {
     expect(dataController.countOccurences(constants.wordList)).toEqual(constants.wordCount)
+})
+
+test("Count occurences - Error on bad values", () => {
     expect(() => {
         dataController.countOccurences(constants.errorList)
     }).toThrow(TypeError)
@@ -16,4 +23,36 @@ test("Count occurences of a list of strings", () => {
     }).toThrow(TypeError)
 })
 
-test("")
+const mockUser = JSON.parse(fs.readFileSync('user.json'))
+const top_time_signature = JSON.parse(fs.readFileSync('gizzard.json'))
+const topTracksAllFeatures = JSON.parse(fs.readFileSync('topTracksAllFeatures.json'))
+
+test("Get top track with feature: time_signature", () => {
+    expect(dataController.getTopTracksWithFeature(mockUser.tracks, 'time_signature', 1)).toEqual(top_time_signature)
+})
+
+test("Raise error on unknown track feature or number < 1", () => {
+    expect(() =>{
+        dataController.getTopTracksWithFeature(mockUser.tracks, 'fake_feature', 1)
+    }).toThrow(RangeError)
+    expect(() => {
+        dataController.getTopTracksWithFeature(mockUser.tracks, 'danceability', -1)
+    }).toThrow(RangeError)
+})
+
+test("Get top tracks of all features", () => {
+    const mockUser = JSON.parse(fs.readFileSync('user.json'))
+    expect(dataController.getTopTracksAllFeatures(mockUser.tracks, 1)).toEqual(topTracksAllFeatures)
+})
+
+test("Top Tracks of all features - Error on invalid types or number", () => {
+    expect(()=>{
+        dataController.getTopTracksAllFeatures('bad_type', 1)
+    }).toThrow(TypeError)
+    expect(()=>{
+        dataController.getTopTracksAllFeatures(mockUser.tracks, -1)
+    }).toThrow(RangeError)
+    expect(()=>{
+        dataController.getTopTracksAllFeatures(mockUser.tracks, 'bad_type')
+    }).toThrow(TypeError)
+})

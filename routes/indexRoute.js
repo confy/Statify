@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
 
 const { ensureAuthenticated } = require("../middleware/checkAuth");
 const userController = require("../controllers/userController")
+const dataController = require("../controllers/dataController")
 
 
 
@@ -39,7 +41,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         }, function (err) {
             console.log('Something went wrong fetching artist data!', err);
         })
-        
+
     spotifyApi.getMyTopTracks({
         "limit": 50
     })
@@ -53,11 +55,11 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
             return spotifyApi.getAudioFeaturesForTracks(trackIDs)
         })
         .then(function (data) {
-            console.log(data.body)
+
             userController.bindTrackFeatures(req.user.id, data.body.audio_features)
             res.render("profile", { user: user })
         })
-    
+
 })
 
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
@@ -105,14 +107,19 @@ router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
         res.render('track', { trackInfo: data['0'], trackFeatures: data['1'] })
 
     })
-
-
 })
 
 router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
     res.render('tracks', { tracks: req.user.tracks })
 
 })
+
+router.get('/profile/top_features', ensureAuthenticated, function (req, res) {
+    tracks = dataController.getTopTracksAllFeatures(req.user.tracks)
+    res.send(JSON.stringify(tracks, null, 2))
+    //res.render('topFeatures', {tracks: tracks})
+})
+
 
 router.get('/table', ensureAuthenticated, function (req, res) {
     res.render('table')
