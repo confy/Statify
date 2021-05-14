@@ -1,0 +1,31 @@
+<div class="container">
+    <br><br>
+    <h2>Your Top 50 Tracks</h2>
+    <p>You listen to all this stuff way too much...</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Track Name</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Popularity</th>
+                <th>Link</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% Object.entries(tracks).forEach((track)=> { %>
+                <tr>
+                    <td><%= Number(track[0]) + 1 %></td>
+                    <td><a href="/track/<%= track[1].id %>"><%= track[1].name %></a></td>
+                    <td><a href="/artist/<%= track[1].artists[0].id %>"><%= track[1].artists[0].name %></a></td>
+                    <td><%= track[1].album.name %></td>
+                    <td><%= track[1].popularity %></td>
+                    <td><a href="<%= track[1].external_urls.spotify %>">Link</a></td>
+                </tr>
+                <%})%>
+                
+        </tbody>
+    </table>
+</div>

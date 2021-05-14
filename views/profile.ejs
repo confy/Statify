@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="style.css">
 <body>
+<div class="container">
 <div class="profilepagebodyimg">
     <!-- If the user has a profile picture display it -->
     <% if (user.profilePic) { %>
@@ -9,12 +9,16 @@
     <% } else { %>
         <img src="images/placeholder_pic.png" alt="<%=user.name%>">
     <% } %>
+    
 </div>
-<div class="profilepagebodytext">
+<div class="profilepagebodytext container">
+<h1> Profile</h1>
 <p>Name: <%=user.name%></p>
 <p>Id: <%=user.id%></p>
+<p><%= user.followers %> followers</p>
 <p>Country: <%=user.country%></p>
 <a href="<%=user.profileUrl%>">Link to Profile</a>
+</div>
 </div>
 
 

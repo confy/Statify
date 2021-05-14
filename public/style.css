@@ -10,10 +10,106 @@ body {
     margin-left: -150px;
 }
 
+/* h1 {
+    font-size: 5rem;
+    font-family: Georgia, 'Times New Roman', Times, sans-serif;
+}
+
+.p {
+    font-size: 25px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+.error {
+    display: block ;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.spotify {
+    display: block ;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+}
+
+.logo {
+    left:0px;
+}
+
+footer {
+    text-align: center;
+}
+
+.cont {
+  height: 40px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 5rem 1fr 5rem;
+    grid-template-columns: minmax(0px,auto) 1fr;
+    grid-template-areas: 
+    'a  b';
+    width: 100vw;
+    height: 100vh;
+} */
+
+.nav-font {
+    list-style-type: none;
+    float: right;
+    padding: 10px;
+    display: inline;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: white;
+}
+
+/* nav {
+    background-color: #003E6B;
+    width: 100 wh;
+    height: 50px;
+    position: sticky;
+} */
+
+.maincontainer {
+    position:fixed;
+    top: 50%;
+    left: 35%;
+    margin-top: 0.3vh;
+    margin-left: 0.3vh;
+}
+/* img {
+    width: 150px;
+    height: 150px;
+} */
 .profilepagebodytext {
     text-align: left;
-    padding-top: 10px;
-    padding-left: 350px;
+    padding-top: 80px;
+    padding-left: 320px;
     font-weight: bold;
 
 }
@@ -23,15 +119,24 @@ body {
     padding-top: 10px;
     padding-left: 10px;
 }
-p {
-    color: black;
-    margin:5px
+
+.vl {
+    border-left: 6px solid;
+    height: 500px;
+    object-position: right;
+
 }
+/* p {
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+} */
+
 
 @media only screen and (max-width: 600px) {
-    img { width: 200px;
-        height: 200px;
-    }
+    /* img { width: 150px;
+        height: 150px;
+    } */
     .profilepagebodytext {
         padding-left: 230px;
     }

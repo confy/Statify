@@ -1,6 +1,6 @@
 {
-  "name": "tastemaking",
-  "version": "1.0.0",
+  "name": "statify",
+  "version": "0.0.1",
   "description": "discover and interact with trends in your music taste",
   "main": "index.js",
   "jest": {
@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "start": "nodemon index.js"
   },
   "repository": {

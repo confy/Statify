@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Statify</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,19 +22,20 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item nav-font">
                     <a class="nav-link" href="/auth/spotify">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-font">
                     <a class="nav-link" href="/profile">Profile <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-font">
                     <a class="nav-link" href="/profile/artists">Artists</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-font">
                     <a class="nav-link" href="/profile/tracks">Tracks</a>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- Some styling issues with dropdown, need to restyle if you want to use -->
+                <!-- <li class="nav-item dropdown nav-font">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
@@ -45,12 +46,12 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
-            
+                </li> -->
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Change Theme</button>
             </form>
         </div>
     </nav>
