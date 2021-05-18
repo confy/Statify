@@ -1,0 +1,46 @@
+<main role="main">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Your Playlists</h1>
+    </section>
+
+    <div class="album py-5">
+      <div class="container">
+          <div class="row">
+          <% if (Object.keys(playlists).length != 0 ) { %>
+              <% Object.entries(playlists).forEach(function (playlist) { %>
+                      <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                          <a href="/playlist/<%= playlist[1].id %>"><img class="card-img-top" src="<%= playlist[1].images[0].url%>" alt="<%=playlist[1].name %>"></a>
+                          <div class="card-body">
+                            <p class="card-text"><b> <%= playlist[1].name %></b></p>
+                            <p class="card-text"> <%= playlist[1].genres %></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/playlist/<%= playlist[1].id %>">View</a></button>
+                              </div>
+                              <small class="text-muted">#<%=Number(playlist[0]) + 1 %></small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+              <% }) %>            
+          <!-- Otherwise say no artists found -->
+          <% } else { %>
+              Your artists are empty!!!
+          <% } %>
+      </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Created by: Adrian M, Markus L, Luke L, Simon J, Trent G, Bill H </p>
+    </div>
+  </footer>
