@@ -12,7 +12,8 @@ const constants = {
         instrumentalness: '0.338',
         liveness: '0.179',
         speechiness: '0.070',
-        tempo: '127.162'
+        tempo: '127.162',
+        valence: '0.436'
       }
 }
 
