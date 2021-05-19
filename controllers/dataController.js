@@ -50,7 +50,7 @@ const dataController = {
     },
 
     keys: ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"],
-    
+
     getSongKey: (keyNumber) => {
         let keys = dataController.keys
         if (typeof keyNumber != 'number') {
@@ -66,6 +66,24 @@ const dataController = {
             relativeMin = keyNumber - 3
         }
         return `${keys[keyNumber]} Maj or ${keys[relativeMin]} Min`
+    },
+
+    avgTrackFeatures: (tracks) => {
+        let summary = {
+            'acousticness': 0, 'danceability': 0,
+            'energy': 0, 'instrumentalness': 0,
+            'liveness': 0, 'speechiness': 0, 'tempo': 0,
+            'valence': 0,
+        }
+        Object.values(tracks).forEach((track) => {
+            Object.entries(summary).forEach((feature) => {
+                summary[feature[0]] += (track.features[feature[0]] / tracks.length)
+            })
+        })
+        Object.entries(summary).forEach((feature) => {
+            summary[feature[0]] = summary[feature[0]].toFixed(3)
+        })
+        return summary
     }
 }
 

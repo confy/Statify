@@ -1,4 +1,5 @@
 // const { users } = require('database')
+const dataController = require("../controllers/dataController")
 const users = require('../database').users
 const userModel = require("../models/userModel")
 const userController = {
@@ -11,7 +12,7 @@ const userController = {
     },
 
     getUserById: (id) => {
-        if (id in users){
+        if (id in users) {
             return users[id]
         }
         return null
@@ -21,6 +22,13 @@ const userController = {
         for (let i = 0; i < features.length; i++) {
             user.tracks[i].features = features[i]
         }
+    },
+    addSummaryTrackStats: (id) => {
+        let user = userController.getUserById(id)
+        if (user === null) {
+            return null
+        }
+        user.summary = dataController.avgTrackFeatures(user.tracks)
     }
 }
 module.exports = userController;

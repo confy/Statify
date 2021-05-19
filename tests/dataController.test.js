@@ -4,7 +4,16 @@ const dataController = require("../controllers/dataController")
 const constants = {
     wordList: ["Testing", "is", "important", "it", "seriously", "is", "important"],
     wordCount: { Testing: 1, is: 2, important: 2, it: 1, seriously: 1 },
-    errorList: ["Testing", "is", "important", "until", 1, 2, "it", "breaks"]
+    errorList: ["Testing", "is", "important", "until", 1, 2, "it", "breaks"],
+    summarizedFeatures: {
+        acousticness: '0.524',
+        danceability: '0.512',
+        energy: '0.441',
+        instrumentalness: '0.338',
+        liveness: '0.179',
+        speechiness: '0.070',
+        tempo: '127.162'
+      }
 }
 
 
@@ -74,4 +83,8 @@ test("Get Key - Error on value out of range or bad type", () => {
         dataController.getSongKey('bad_type')
     }).toThrow(TypeError)
     
+})
+
+test("Summarize Track stats", () => {
+    expect(dataController.avgTrackFeatures(mockUser.tracks)).toEqual(constants.summarizedFeatures)
 })

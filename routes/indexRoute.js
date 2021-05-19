@@ -32,7 +32,8 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
     }
     spotifyApi.setAccessToken(req.user.accessToken);
     spotifyApi.getMyTopArtists({
-        "limit": 50
+        "limit": 50,
+        "time_range": "long_term"
     })
         .then(function (data) {
             user["artists"] = data.body.items
@@ -50,7 +51,8 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
     });
 
     spotifyApi.getMyTopTracks({
-        "limit": 100
+        "limit": 50,
+        "time_range": "long_term"
     })
         .then(function (data) {
             user["tracks"] = data.body.items
@@ -64,6 +66,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         .then(function (data) {
 
             userController.bindTrackFeatures(req.user.id, data.body.audio_features)
+            userController.addSummaryTrackStats(req.user.id)
             res.render("profile", { user: user })
         })
 
