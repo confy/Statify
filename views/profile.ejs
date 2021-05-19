@@ -1,29 +1,37 @@
-<br>
-<div class="container">
-    <section class="jumbotron text-center">
-        <div class="profilepagebodyimg container">
-            <!-- If the user has a profile picture display it -->
-            <% if (user.profilePic) { %>
-                <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
-                
-            <!-- Otherwise display a placeholder image. -->
-            <% } else { %>
-                <img src="images/placeholder_pic.png" alt="<%=user.name%>">
-            <% } %>
 
-            </div>
-            <div class="profilepagebodytext container">
-                <h1> Profile</h1>
-                <p>Name: <%=user.name%></p>
-                <p>Id: <%=user.id%></p>
-                <p><%= user.followers %> followers</p>
-                <p>Country: <%=user.country%></p>
-                <a href="<%=user.profileUrl%>">Link to Profile</a>
+<div style="margin-left: calc(50vw - 223.5px)">
+    <br>
+    <table>
+        <tr>
+            <th>
+              <div class="container">
+                <section class="jumbotron text-center">
+                  <div class="profilepagebodyimg container">
+                        <!-- If the user has a profile picture display it -->
+                        <% if (user.profilePic) { %>
+                            <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
+                            
+                        <!-- Otherwise display a placeholder image. -->
+                        <% } else { %>
+                            <img src="images/placeholder_pic.png" alt="<%=user.name%>">
+                        <% } %>
+                     </div>
+                  </section>
+               </div>
+            </th>
+            <th>
+                <div class="profilepagebodytext container">
+                    <h1>Profile</h1>
+                    <p>Name: <%=user.name%></p>
+                    <p>Id: <%=user.id%></p>
+                    <p><%= user.followers %> followers</p>
+                    <p>Country: <%=user.country%></p>
+                    <a href="<%=user.profileUrl%>">Link to Profile</a>
                 </div>
-    </section>
+            </th>
+        </div>
+    </table>
 </div>
-
-
 <div class="container">
     <ul class="list-group">
         <li class="list-group-item">
@@ -95,4 +103,3 @@
         </li>
     </ul>
     <br>
-</div>
