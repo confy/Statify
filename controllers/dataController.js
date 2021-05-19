@@ -25,31 +25,20 @@ const dataController = {
     ],
 
     getTopTracksWithFeature: (tracks, feature, number) => {
-        if (typeof tracks !== 'object') {
+        if (typeof tracks !== 'object' | typeof feature !== 'string' | typeof number !== 'number') {
             throw new TypeError
         }
-        if (typeof feature !== 'string') {
-            throw new TypeError
-        }
-        if (typeof number !== 'number') {
-            throw new TypeError
-        }
-        if (number < 1) {
+        if (number < 1 | !(dataController.features.includes(feature))) {
             throw new RangeError
         }
-        if (!(dataController.features.includes(feature))) {
-            throw new RangeError
-        }
-        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).splice(0, 1)
+        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).splice(0, number)
     },
 
     getTopTracksAllFeatures: (tracks, number) => {
-        if (typeof tracks !== 'object') {
+        if (typeof tracks !== 'object' | typeof number !== 'number') {
             throw new TypeError
         }
-        if (typeof number !== 'number') {
-            throw new TypeError
-        }
+
         if (number < 1) {
             throw new RangeError
         }
@@ -61,7 +50,7 @@ const dataController = {
     },
 
     keys: ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"],
-    
+
     getSongKey: (keyNumber) => {
         let keys = dataController.keys
         if (typeof keyNumber != 'number') {
@@ -77,6 +66,24 @@ const dataController = {
             relativeMin = keyNumber - 3
         }
         return `${keys[keyNumber]} Maj or ${keys[relativeMin]} Min`
+    },
+
+    avgTrackFeatures: (tracks) => {
+        let summary = {
+            'acousticness': 0, 'danceability': 0,
+            'energy': 0, 'instrumentalness': 0,
+            'liveness': 0, 'speechiness': 0, 'tempo': 0,
+            'valence': 0,
+        }
+        Object.values(tracks).forEach((track) => {
+            Object.entries(summary).forEach((feature) => {
+                summary[feature[0]] += (track.features[feature[0]] / tracks.length)
+            })
+        })
+        Object.entries(summary).forEach((feature) => {
+            summary[feature[0]] = summary[feature[0]].toFixed(3)
+        })
+        return summary
     }
 }
 

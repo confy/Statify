@@ -32,7 +32,8 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
     }
     spotifyApi.setAccessToken(req.user.accessToken);
     spotifyApi.getMyTopArtists({
-        "limit": 50
+        "limit": 50,
+        "time_range": "long_term"
     })
         .then(function (data) {
             user["artists"] = data.body.items
@@ -41,9 +42,17 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         }, function (err) {
             console.log('Something went wrong fetching artist data!', err);
         })
+    spotifyApi.getUserPlaylists(req.user.id, {
+        "limit": 50
+    }).then(function (data) {
+        user["playlists"] = data.body.items
+    }, function (err) {
+        console.log('Something went wrong fetching playlists!', err);
+    });
 
     spotifyApi.getMyTopTracks({
-        "limit": 50
+        "limit": 50,
+        "time_range": "long_term"
     })
         .then(function (data) {
             user["tracks"] = data.body.items
@@ -57,6 +66,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         .then(function (data) {
 
             userController.bindTrackFeatures(req.user.id, data.body.audio_features)
+            userController.addSummaryTrackStats(req.user.id)
             res.render("profile", { user: user })
         })
 
@@ -121,6 +131,9 @@ router.get('/profile/top_features', ensureAuthenticated, function (req, res) {
     //res.render('topFeatures', {tracks: tracks})
 })
 
+router.get('/profile/playlists', ensureAuthenticated, function (req, res) {
+    res.render('playlists', { playlists: req.user.playlists })
+})
 
 router.get('/table', ensureAuthenticated, function (req, res) {
     res.render('table')
