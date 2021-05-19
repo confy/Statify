@@ -1,19 +1,21 @@
+<div class="container">
 <section class="jumbotron text-center" style="background-color: #92a8d1;">
-    <div class="container">
-        <img src="<%=artist.images[1].url %>" alt="..." class="img-thumbnail">
-        <h1 class="jumbotron-heading">
-            <%= artist.name %>
-        </h1>
-        
-        <ul class="list-group">
-            <li class="list-group-item lead text-muted"><%= artist.genres %></li>
-            <li class="list-group-item lead text-muted">Followers: <%= artist.followers.total %></li>
-            <li class="list-group-item lead text-muted">Popularity: <%= artist.popularity %></li>
-        </ul>
-    </div>
+    <img src="<%=artist.images[1].url %>" alt="..." class="img-thumbnail">
+    <h1 class="jumbotron-heading">
+        <%= artist.name %>
+    </h1>
+    <ul class="list-group">
+        <li class="list-group-item lead text-muted">
+            <%= artist.genres %>
+        </li>
+        <li class="list-group-item lead text-muted">Followers: <%= artist.followers.total %>
+        </li>
+        <li class="list-group-item lead text-muted">Popularity: <%= artist.popularity %>
+        </li>
+    </ul>
 </section>
 <div class="card-body">
-    <table class="table table-dark" id="artistTopTracks">
+    <table class="table table-light" id="artistTopTracks">
         <thead>
             <tr>
                 <th>Rank</th>
@@ -31,7 +33,9 @@
                         <%= Number(track[0]) + 1 %>
                     </td>
                     <td>
-                        <a href="/track/<%= track[1].id %>"><%= track[1].name %></a>
+                        <a href="/track/<%= track[1].id %>">
+                            <%= track[1].name %>
+                        </a>
                     </td>
                     <td>
                         <%= track[1].album.name %>
@@ -45,33 +49,38 @@
 
         </tbody>
     </table>
+</div>
     <div class="album py-5">
         <div class="container">
             <div class="row">
-            <% if (Object.keys(artistAlbums).length != 0 ) { %>
-                <% Object.entries(artistAlbums).forEach(function (album) { %>
+                <% if (Object.keys(artistAlbums).length !=0 ) { %>
+                    <% Object.entries(artistAlbums).forEach(function (album) { %>
                         <div class="col-md-4">
-                          <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="<%= album[1].images[0].url%>" alt="<%=album[1].name %>">
-                            <div class="card-body">
-                              <p class="card-text"><b> <%= album[1].name %></b></p>
-                              <p class="card-text"> <%= album[1].genres %></p>
-                              <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top" src="<%= album[1].images[0].url%>" alt="<%=album[1].name %>">
+                                <div class="card-body">
+                                    <p class="card-text"><b>
+                                            <%= album[1].name %>
+                                        </b></p>
+                                    <p class="card-text">
+                                        <%= album[1].genres %>
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        </div>
+                                        <small class="text-muted">#<%=Number(album[0]) + 1 %></small>
+                                    </div>
                                 </div>
-                                <small class="text-muted">#<%=Number(album[0]) + 1 %></small>
-                              </div>
                             </div>
-                          </div>
                         </div>
-                      
-                <% }) %>            
-            <!-- Otherwise say no artists found -->
-            <% } else { %>
-                Your artists are empty!!!
-            <% } %>
+
+                        <% }) %>
+                            <!-- Otherwise say no artists found -->
+                            <% } else { %>
+                                Your artists are empty!!!
+                                <% } %>
+            </div>
         </div>
-        </div>
-      </div>
+    </div>
 </div>
