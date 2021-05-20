@@ -1,4 +1,3 @@
-<div class="container">
 <section class="jumbotron text-center">
     <div class="container">
         <img src="<%=trackInfo.album.images[1].url%>" alt="..." class="img-thumbnail">
@@ -6,22 +5,25 @@
             <%= trackInfo.name%>
         </h1>
         <h2 class="lead">
-            Artist: <%= trackInfo.artists[0].name %>
+            <a href="/artist/<%= trackInfo.artists[0].id%>"><%= trackInfo.artists[0].name %></a>
         </h2>
         <h2 class="lead">
-            Album: <%= trackInfo.album.name %>
+            <a href="/album/<%= trackInfo.album.id%>"><%= trackInfo.album.name %></a>
         </h2>
-        <h2 class="lead">Track #<%= trackInfo.track_number %></h2>
+        <h2 class="lead">Track #<%= trackInfo.track_number %>
+        </h2>
 
     </div>
 </section>
-
-
+<div class="container">
     <ul class="list-group">
-        <li class="list-group-item lead">Popularity: <%= trackInfo.popularity %></li>
-        <li class="list-group-item lead">Tempo: <%= trackFeatures.tempo %></li>
+        <li class="list-group-item lead">Popularity: <%= trackInfo.popularity %>
+        </li>
+        <li class="list-group-item lead">Tempo: <%= trackFeatures.tempo %>
+        </li>
         <li class="list-group-item lead">Time Signature: <%= trackFeatures.time_signature %>/4</li>
-        <li class="list-group-item lead">Key: <%= trackFeatures.key %></li>
+        <li class="list-group-item lead">Key: <%= trackFeatures.key %>
+        </li>
         <li class="list-group-item">
             <p class="lead">Danceability</p>
             <div class="progress">

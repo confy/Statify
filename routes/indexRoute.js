@@ -164,6 +164,32 @@ router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
 
 })
 
+router.get('/album/:albumID', ensureAuthenticated, function (req, res) {
+    spotifyApi.setAccessToken(req.user.accessToken)
+    let album
+    spotifyApi.getAlbum(req.params.albumID)
+        .then(function (data) {
+            album = data.body
+            return data.body.tracks.items.map(function (track) {
+                return track.id
+            })
+        })
+        .then(function (trackIDs) {
+            return spotifyApi.getAudioFeaturesForTracks(trackIDs)
+        }).then(function (data) {
+
+                album.tracks = album.tracks.items
+                album.tracks = album.tracks.map((item, idx) => {
+                    item.features = data.body.audio_features[idx]
+                    return item
+                })
+                console.log(album)
+            
+            summary = dataController.avgTrackFeatures(album.tracks)
+            res.render('album', { album: album, summary: summary })
+        })
+
+})
 
 router.get('/table', ensureAuthenticated, function (req, res) {
     res.render('table')

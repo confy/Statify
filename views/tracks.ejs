@@ -21,14 +21,20 @@
                     <td>
                         <%= Number(track[0]) + 1 %>
                     </td>
-                    <td><a href="/track/<%= track[1].id %>">
-                            <%= track[1].name %>
-                        </a></td>
-                    <td><a href="/artist/<%= track[1].artists[0].id %>">
-                            <%= track[1].artists[0].name %>
-                        </a></td>
                     <td>
-                        <%= track[1].album.name %>
+                        <a href="/track/<%= track[1].id %>">
+                            <%= track[1].name %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/artist/<%= track[1].artists[0].id %>">
+                            <%= track[1].artists[0].name %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/album/<%= track[1].album.id %>">
+                            <%= track[1].album.name %>
+                        </a>
                     </td>
                     <td>
                         <%= track[1].popularity %>

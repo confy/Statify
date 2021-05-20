@@ -1,18 +1,19 @@
 <section class="jumbotron text-center">
-    <% if (playlistInfo.images.length >= 2) { %>
-        <img src="<%=playlistInfo.images[1].url %>" alt="..." class="img-thumbnail">
+    <% if (album.images.length >= 2) { %>
+        <img src="<%=album.images[1].url %>" alt="..." class="img-thumbnail">
     <% } else { %>
-        <img src="<%=playlistInfo.images[0].url %>" alt="..." class="img-thumbnail">
+        <img src="<%=album.images[0].url %>" alt="..." class="img-thumbnail">
     <% } %>
     <h1 class="jumbotron-heading">
-        <%= playlistInfo.name %>
+        <%= album.name %>
     </h1>
-    <h2 class ="text-muted">by <%= playlistInfo.owner.display_name %></h2>
+    <h3 class ="text-muted">by <a href="/artist/<%=album.artists[0].id%>"><%= album.artists[0].name %></a></h3>
+    <h4 class ="text-muted"><%= album.release_date %></h4>
 </section>
 <div class="container">    
     <ul class="list-group">
         <li class="list-group-item">
-            <h5>Playlist Averages</h5>
+            <h5>Album Averages</h5>
         </li>
         <li class="list-group-item">
             <p class="lead">Danceability</p>
@@ -85,15 +86,12 @@
                 <tr>
                     <th>Rank</th>
                     <th>Track Name</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th>Popularity</th>
                     <th>Link</th>
 
                 </tr>
             </thead>
             <tbody>
-                <% Object.entries(playlist).forEach((track)=> { %>
+                <% Object.entries(album.tracks).forEach((track)=> { %>
                     <tr>
                         <td>
                             <%= Number(track[0]) + 1 %>
@@ -102,20 +100,6 @@
                             <a href="/track/<%= track[1].id %>">
                                 <%= track[1].name %>
                             </a>
-                        </td>
-                        <td>
-                            <a href="/artist/<%= track[1].artists[0].id %>">
-                                <%= track[1].artists[0].name %>
-                            </a>
-                            
-                        </td>
-                        <td>                            
-                            <a href="/album/<%= track[1].album.id %>">
-                                <%= track[1].album.name %>
-                            </a>
-                        </td>
-                        <td>
-                            <%= track[1].popularity %>
                         </td>
                         <td><a href="<%= track[1].external_urls.spotify %>">Link</a></td>
                     </tr>
