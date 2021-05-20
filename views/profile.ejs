@@ -20,10 +20,18 @@
                 </th>
                 <th>
                     <div class="profilepagebodytext container">
-                        <h1><%=user.name%></h1>
-                        <p class="text-muted"><%=user.id%></p>
-                        <p class="text-muted"><%= user.followers %> followers</p>
-                        <p class="text-muted"><%=user.country%></p>
+                        <h1>
+                            <%=user.name%>
+                        </h1>
+                        <p class="text-muted">
+                            <%=user.id%>
+                        </p>
+                        <p class="text-muted">
+                            <%= user.followers %> followers
+                        </p>
+                        <p class="text-muted">
+                            <%=user.country%>
+                        </p>
                         <a href="<%=user.profileUrl%>">Link to Profile</a>
                     </div>
                 </th>
@@ -117,3 +125,4 @@
         </li>
     </ul>
     <br>
+</div>

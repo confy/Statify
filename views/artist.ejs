@@ -1,6 +1,10 @@
 <div class="container">
-<section class="jumbotron text-center" style="background-color: #92a8d1;">
-    <img src="<%=artist.images[1].url %>" alt="..." class="img-thumbnail">
+<section class="jumbotron text-center">
+    <% if (artist.images.length >= 2) { %>
+        <img src="<%=artist.images[1].url %>" alt="..." class="img-thumbnail">
+    <% } else { %>
+        <img src="<%=artist.images[0].url %>" alt="..." class="img-thumbnail">
+    <% } %>
     <h1 class="jumbotron-heading">
         <%= artist.name %>
     </h1>

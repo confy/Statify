@@ -17,10 +17,10 @@ const userController = {
         }
         return null
     },
-    bindTrackFeatures: (id, features) => {
-        let user = userController.getUserById(id, features)
+    bindTrackFeatures: (id, features, key) => {
+        let user = userController.getUserById(id)
         for (let i = 0; i < features.length; i++) {
-            user.tracks[i].features = features[i]
+            user[key][i].features = features[i]
         }
     },
     addSummaryTrackStats: (id) => {
