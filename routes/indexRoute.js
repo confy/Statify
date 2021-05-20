@@ -65,7 +65,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         })
         .then(function (data) {
 
-            userController.bindTrackFeatures(req.user.id, data.body.audio_features)
+            userController.bindTrackFeatures(req.user.id, data.body.audio_features, 'tracks')
             userController.addSummaryTrackStats(req.user.id)
             res.render("profile", { user: user })
         })
@@ -99,13 +99,13 @@ router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
     })
 })
 
-router.get('/track/:trackid', ensureAuthenticated, function (req, res) {
+router.get('/track/:trackID', ensureAuthenticated, function (req, res) {
     spotifyApi.setAccessToken(req.user.accessToken)
-    let trackInfo = spotifyApi.getTrack(req.params.trackid)
+    let trackInfo = spotifyApi.getTrack(req.params.trackID)
         .then(function (data) {
             return data.body
         })
-    let trackFeatures = spotifyApi.getAudioFeaturesForTrack(req.params.trackid)
+    let trackFeatures = spotifyApi.getAudioFeaturesForTrack(req.params.trackID)
         .then(function (data) {
             return data.body
 
@@ -134,6 +134,36 @@ router.get('/profile/top_features', ensureAuthenticated, function (req, res) {
 router.get('/profile/playlists', ensureAuthenticated, function (req, res) {
     res.render('playlists', { playlists: req.user.playlists })
 })
+
+router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
+    spotifyApi.setAccessToken(req.user.accessToken)
+    let playlist, playlistInfo
+    spotifyApi.getPlaylist(req.params.playlistID)
+        .then(function (data) {
+            playlistInfo = data.body
+        })
+    spotifyApi.getPlaylistTracks(req.params.playlistID, { limit: 100 })
+        .then(function (data) {
+            console.log(data)
+            playlist = data.body.items
+            return data.body.items.map(function (item) {
+                return item.track.id
+            })
+        })
+        .then(function (trackIDs) {
+            return spotifyApi.getAudioFeaturesForTracks(trackIDs)
+        }).then(function (data) {
+            let playlistTracks = playlist.map((item, idx) => {
+                item = item.track
+                item.features = data.body.audio_features[idx]
+                return item
+            })
+            summary = dataController.avgTrackFeatures(playlistTracks)
+            res.render('playlist', { playlistInfo: playlistInfo, playlist: playlistTracks, summary: summary })
+        })
+
+})
+
 
 router.get('/table', ensureAuthenticated, function (req, res) {
     res.render('table')
