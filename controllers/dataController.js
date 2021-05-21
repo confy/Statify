@@ -14,10 +14,17 @@ const dataController = {
             } else {
                 output[word] += 1
             }
-
         })
         return output
     },
+    convertCountForWordcloud: (countObj) => {
+        const output = []
+        Object.entries(countObj).forEach((word) => {
+            output.push([word[0], word[1]])
+        })
+        return output.sort((x, y) => { return y[1] - x[1] })
+    }
+    ,
     features: ['acousticness', 'danceability', 'duration_ms',
         'energy', 'instrumentalness', 'key',
         'liveness', 'loudness', 'mode',

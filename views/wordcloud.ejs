@@ -1,0 +1,42 @@
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Your Genre Wordcloud</h1>
+    </section>
+    </div>
+</main>
+
+<div class="container">
+    <div id="wordcloud" style="height: 600px"></div>
+    <br>
+
+
+    <script src="/wordcloud.js"></script>
+    <script>
+        let clientWordCounts = <%- JSON.stringify(wordCounts) %>;
+        let wordCloudElem = document.getElementById("wordcloud")
+        WordCloud(wordCloudElem, {
+            list: clientWordCounts,
+            gridSize: Math.round(16 * wordCloudElem.offsetWidth / 1024),
+            weightFactor: 12,
+            fontFamily: 'Arial',
+            color: 'random-dark',
+            backgroundColor: '#92A8D1'
+        });
+    </script>
+
+    <table class="table table-light">
+        <th>Genre</th>
+        <th>Count</th>
+        <% wordCounts.forEach((word)=>{ %>
+            <tr>
+                <td>
+                    <%=word[0] %>
+                </td>
+                <td>
+                    <%=word[1] %>
+                </td>
+            </tr>
+            <%})%>
+    </table>
+</div>

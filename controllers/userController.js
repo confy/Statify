@@ -29,6 +29,15 @@ const userController = {
             return null
         }
         user.summary = dataController.avgTrackFeatures(user.tracks)
+    },
+    getGenresList: (id) => {
+        let user = userController.getUserById(id)
+        if (user === null) {
+            return null
+        }
+        let output = user.artists.map(artist => artist.genres)
+        console.log(output)
+        return output.flat(4)        
     }
 }
 module.exports = userController;
