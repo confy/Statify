@@ -178,19 +178,27 @@ router.get('/album/:albumID', ensureAuthenticated, function (req, res) {
             return spotifyApi.getAudioFeaturesForTracks(trackIDs)
         }).then(function (data) {
 
-                album.tracks = album.tracks.items
-                album.tracks = album.tracks.map((item, idx) => {
-                    item.features = data.body.audio_features[idx]
-                    return item
-                })
-                console.log(album)
-            
+            album.tracks = album.tracks.items
+            album.tracks = album.tracks.map((item, idx) => {
+                item.features = data.body.audio_features[idx]
+                return item
+            })
+            console.log(album)
+
             summary = dataController.avgTrackFeatures(album.tracks)
             res.render('album', { album: album, summary: summary })
         })
 
 })
 
+
+router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
+    userGenres = userController.getGenresList(req.user.id)
+    wordCount = dataController.countOccurences(userGenres)
+    wordCloudList = dataController.convertCountForWordcloud(wordCount)
+    console.log(wordCloudList)
+    res.render('wordcloud', {wordCounts: wordCloudList})
+})
 router.get('/table', ensureAuthenticated, function (req, res) {
     res.render('table')
 })
