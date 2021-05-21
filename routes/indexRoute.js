@@ -36,9 +36,8 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         "time_range": "long_term"
     })
         .then(function (data) {
-            user["artists"] = data.body.items
-            console.log(user);
-
+            userController.addField(req.user.id, data.body.items, 'artists')
+            // user["artists"] = data.body.items
         }, function (err) {
             console.log('Something went wrong fetching artist data!', err);
         })
@@ -55,7 +54,8 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         "time_range": "long_term"
     })
         .then(function (data) {
-            user["tracks"] = data.body.items
+            userController.addField(req.user.id, data.body.items, 'tracks')
+            // user["tracks"] = data.body.items
             return data.body.items.map(function (track) {
                 return track.id
             })
@@ -93,7 +93,6 @@ router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
             return data.body
         })
     Promise.all([artistInfo, artistTopTracks, artistAlbums]).then((data) => {
-        console.log(data)
         res.render('artist', { artist: data[0], artistTopTracks: data[1].tracks, artistAlbums: data[2].items })
 
     })
@@ -113,7 +112,6 @@ router.get('/track/:trackID', ensureAuthenticated, function (req, res) {
             console.log(err);
         });
     Promise.all([trackInfo, trackFeatures]).then((data) => {
-        console.log(data)
         data['1'].key = dataController.getSongKey(data['1'].key)
         res.render('track', { trackInfo: data['0'], trackFeatures: data['1'] })
 
@@ -126,8 +124,8 @@ router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
 })
 
 router.get('/profile/top_features', ensureAuthenticated, function (req, res) {
-    tracks = dataController.getTopTracksAllFeatures(req.user.tracks)
-    res.send(JSON.stringify(tracks, null, 2))
+    let sorted_tracks = dataController.getTopTracksAllFeatures(req.user.tracks, 5)
+    res.render('topFeatures', {features: sorted_tracks})
     //res.render('topFeatures', {tracks: tracks})
 })
 
@@ -144,7 +142,6 @@ router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
         })
     spotifyApi.getPlaylistTracks(req.params.playlistID, { limit: 100 })
         .then(function (data) {
-            console.log(data)
             playlist = data.body.items
             return data.body.items.map(function (item) {
                 return item.track.id
@@ -183,7 +180,6 @@ router.get('/album/:albumID', ensureAuthenticated, function (req, res) {
                 item.features = data.body.audio_features[idx]
                 return item
             })
-            console.log(album)
 
             summary = dataController.avgTrackFeatures(album.tracks)
             res.render('album', { album: album, summary: summary })
@@ -191,15 +187,13 @@ router.get('/album/:albumID', ensureAuthenticated, function (req, res) {
 
 })
 
-
 router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
     userGenres = userController.getGenresList(req.user.id)
     wordCount = dataController.countOccurences(userGenres)
     wordCloudList = dataController.convertCountForWordcloud(wordCount)
-    console.log(wordCloudList)
     res.render('wordcloud', {wordCounts: wordCloudList})
 })
-router.get('/table', ensureAuthenticated, function (req, res) {
+router.get('/profile/sort', ensureAuthenticated, function (req, res) {
     res.render('table')
 })
 module.exports = router
