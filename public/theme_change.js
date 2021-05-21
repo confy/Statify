@@ -22,4 +22,5 @@ btn.addEventListener("click", function () {
       : "light";
   }
   localStorage.setItem("theme", theme);
+  location.reload()
 });

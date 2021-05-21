@@ -1,3 +1,6 @@
+.navbar {
+    
+}
 .nav-font {
     list-style-type: none;
     float: right;
@@ -49,13 +52,18 @@
 body {
     --text-color: #222;
     --primary-color: #92a8d1;
-    --secondary-color: #e9ecef;
+    --secondary-color: #aac4f3;
+    --progress-bar: #4170c8;
+    --progress: #92a8d1;
+    
 }
 
 body.dark-theme {
     --text-color: #eee;
     --primary-color: #121212;
     --secondary-color: #222;
+    --progress-bar: #454545;
+    --progress: #343434;
 }
   
 /* @media (prefers-color-scheme: dark) {
@@ -80,7 +88,7 @@ body, .list-container.list-primary {
 }
 
 /* text color */
-h1, p, pre, h5, th, td, li{
+h1, p, pre, h2, h3, h4, h5, th, td, li{
     color: var(--text-color);
 }
 
@@ -88,6 +96,20 @@ h1, p, pre, h5, th, td, li{
 * {
     font-family: Arial, Helvetica, sans-serif;
   }
+
+li.secondary {
+    background: var(--secondary-color)
+}
+
+div.progress {
+    height: 30px;
+    background-color: var(--progress);
+
+}
+
+div.progress-bar {
+    background-color: var(--progress-bar);
+}
 
 .section-container {
     padding: 2rem 1rem;
