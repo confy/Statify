@@ -1,4 +1,4 @@
-<section class="jumbotron text-center">
+<section class="section-container text-center">
 
     <div style="margin-left: calc(50vw - 260.5px)">
         <br>
@@ -43,13 +43,13 @@
 
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-container">
             <h5><a href="/profile/artists">Your Top Artists</a></h5>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <h5><a href="/profile/tracks">Your Top Tracks</a></h5>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <h5><a href="/profile/playlists">Your Playlists</a></h5>
         </li>
     </ul>
@@ -57,10 +57,10 @@
 <br>
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-container">
             <h5>Your Average Taste</h5>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Danceability</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.danceability * 100 %>%;"
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Energy</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.energy * 100 %>%;"
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Speechiness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.speechiness * 100 %>%;"
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Acousticness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.acousticness * 100 %>%;"
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Instrumentalness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.instrumentalness * 100 %>%;"
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Liveness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.liveness * 100 %>%;"
@@ -114,7 +114,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Valence</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= user.summary.valence * 100 %>%;"

@@ -1,4 +1,4 @@
-<section class="jumbotron text-center">
+<section class="section-container text-center">
     <% if (album.images.length >= 2) { %>
         <img src="<%=album.images[1].url %>" alt="..." class="img-thumbnail">
     <% } else { %>
@@ -12,10 +12,10 @@
 </section>
 <div class="container">    
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-container">
             <h5>Album Averages</h5>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Danceability</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.danceability * 100 %>%;"
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Energy</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.energy * 100 %>%;"
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Speechiness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.speechiness * 100 %>%;"
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Acousticness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.acousticness * 100 %>%;"
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Instrumentalness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.instrumentalness * 100 %>%;"
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Liveness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.liveness * 100 %>%;"
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Valence</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= summary.valence * 100 %>%;"

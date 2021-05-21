@@ -1,4 +1,4 @@
-<section class="jumbotron text-center">
+<section class="section-container text-center">
     <div class="container">
         <img src="<%=trackInfo.album.images[1].url%>" alt="..." class="img-thumbnail">
         <h1>
@@ -17,14 +17,14 @@
 </section>
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item lead">Popularity: <%= trackInfo.popularity %>
+        <li class="list-container lead">Popularity: <%= trackInfo.popularity %>
         </li>
-        <li class="list-group-item lead">Tempo: <%= trackFeatures.tempo %>
+        <li class="list-container lead">Tempo: <%= trackFeatures.tempo %>
         </li>
-        <li class="list-group-item lead">Time Signature: <%= trackFeatures.time_signature %>/4</li>
-        <li class="list-group-item lead">Key: <%= trackFeatures.key %>
+        <li class="list-container lead">Time Signature: <%= trackFeatures.time_signature %>/4</li>
+        <li class="list-container lead">Key: <%= trackFeatures.key %>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Danceability</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.danceability * 100 %>%;"
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Energy</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.energy * 100 %>%;"
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Speechiness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.speechiness * 100 %>%;"
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Acousticness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.acousticness * 100 %>%;"
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Instrumentalness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar"
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Liveness</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.liveness * 100 %>%;"
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-container">
             <p class="lead">Valence</p>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= trackFeatures.valence * 100 %>%;"

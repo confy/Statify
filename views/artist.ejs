@@ -1,4 +1,4 @@
-<section class="jumbotron text-center">
+<section class="section-container text-center">
     <% if (artist.images.length>= 2) { %>
         <img src="<%=artist.images[1].url %>" alt="..." class="img-thumbnail">
         <% } else { %>
@@ -8,12 +8,12 @@
                     <%= artist.name %>
                 </h1>
                 <ul class="list-group">
-                    <li class="list-group-item lead text-muted">
+                    <li class="list-container list-primary lead text-muted">
                         <%= artist.genres %>
                     </li>
-                    <li class="list-group-item lead text-muted">Followers: <%= artist.followers.total %>
+                    <li class="list-container list-primary lead text-muted">Followers: <%= artist.followers.total %>
                     </li>
-                    <li class="list-group-item lead text-muted">Popularity: <%= artist.popularity %>
+                    <li class="list-container list-primary lead text-muted">Popularity: <%= artist.popularity %>
                     </li>
                 </ul>
 </section>
@@ -62,7 +62,7 @@
             <% if (Object.keys(artistAlbums).length !=0 ) { %>
                 <% Object.entries(artistAlbums).forEach(function (album) { %>
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="card-container mb-4 box-shadow">
                             <a href="/album/<%=album[1].id %>"><img class="card-img-top" src="<%= album[1].images[0].url%>" alt="<%=album[1].name %>"></a>
                             <div class="card-body">
                                 <p class="card-text"><b>
