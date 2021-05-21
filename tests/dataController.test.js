@@ -4,18 +4,9 @@ const dataController = require("../controllers/dataController")
 const constants = {
     wordList: ["Testing", "is", "important", "it", "seriously", "is", "important"],
     wordCount: { Testing: 1, is: 2, important: 2, it: 1, seriously: 1 },
+    wordCloudCount: [['is', 2], ['important', 2], ['Testing', 1], ['it', 1], ['seriously', 1]],
     errorList: ["Testing", "is", "important", "until", 1, 2, "it", "breaks"],
-    summarizedFeatures: {
-        acousticness: '0.524',
-        danceability: '0.512',
-        energy: '0.441',
-        instrumentalness: '0.338',
-        liveness: '0.179',
-        speechiness: '0.070',
-        tempo: '127.162',
-        valence: '0.436',
-
-      }
+    summarizedFeatures: {"acousticness":"0.515","danceability":"0.509","energy":"0.448","instrumentalness":"0.331","liveness":"0.190","speechiness":"0.071","tempo":"127.642","valence":"0.432"}
 }
 
 
@@ -32,6 +23,10 @@ test("Count occurences - Error on bad values", () => {
     expect(() => {
         dataController.countOccurences(5)
     }).toThrow(TypeError)
+})
+
+test("Convert occurences count to wordcloud format", () => {
+    expect(dataController.convertCountForWordcloud(constants.wordCount)).toEqual(constants.wordCloudCount)
 })
 
 const mockUser = JSON.parse(fs.readFileSync('tests/data/user.json'))
@@ -84,7 +79,7 @@ test("Get Key - Error on value out of range or bad type", () => {
     expect(() => {
         dataController.getSongKey('bad_type')
     }).toThrow(TypeError)
-    
+
 })
 
 test("Summarize Track stats", () => {

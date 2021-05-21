@@ -26,7 +26,7 @@
                     <a class="nav-link" href="/auth/spotify">Login</a>
                 </li>
                 <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile">Profile <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item nav-font">
                     <a class="nav-link" href="/profile/artists">Artists</a>
@@ -35,7 +35,13 @@
                     <a class="nav-link" href="/profile/tracks">Tracks</a>
                 </li>
                 <li class="nav-item nav-font">
+                    <a class="nav-link" href="/profile/top_features">Features</a>
+                </li>
+                <li class="nav-item nav-font">
                     <a class="nav-link" href="/profile/playlists">Playlists</a>
+                </li>
+                <li class="nav-item nav-font">
+                    <a class="nav-link" href="/profile/wordcloud">Wordcloud</a>
                 </li>
                 
                 <!-- Some styling issues with dropdown, need to restyle if you want to use -->
@@ -53,10 +59,10 @@
                 </li> -->
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0"> -->
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Change Theme</button>
-            </form>
+            <button class="btn-toggle btn btn-outline-success my-2 my-sm-0">Change Theme</button>
+            <!-- </form> -->
         </div>
     </nav>
     <div id="content">
@@ -71,7 +77,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
+    <script src="/theme_change.js"></script>
 </body>
-
 </html>

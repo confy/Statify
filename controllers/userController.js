@@ -17,11 +17,18 @@ const userController = {
         }
         return null
     },
-    bindTrackFeatures: (id, features) => {
-        let user = userController.getUserById(id, features)
+    bindTrackFeatures: (id, features, key) => {
+        let user = userController.getUserById(id)
         for (let i = 0; i < features.length; i++) {
-            user.tracks[i].features = features[i]
+            user[key][i].features = features[i]
         }
+    },
+    addField: (id, items, key) => {
+        let user = userController.getUserById(id)
+        if (user === null) {
+            return null
+        }
+        user[key] = items
     },
     addSummaryTrackStats: (id) => {
         let user = userController.getUserById(id)
@@ -29,6 +36,14 @@ const userController = {
             return null
         }
         user.summary = dataController.avgTrackFeatures(user.tracks)
+    },
+    getGenresList: (id) => {
+        let user = userController.getUserById(id)
+        if (user === null) {
+            return null
+        }
+        let output = user.artists.map(artist => artist.genres)
+        return output.flat(4)        
     }
 }
 module.exports = userController;
