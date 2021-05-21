@@ -1,5 +1,5 @@
 <main role="main">
-    <section class="jumbotron text-center">
+    <section class="section-container text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Your Playlists</h1>
     </section>
@@ -10,7 +10,7 @@
           <% if (Object.keys(playlists).length != 0 ) { %>
               <% Object.entries(playlists).forEach(function (playlist) { %>
                       <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="card-container mb-4 box-shadow">
                           <a href="/playlist/<%= playlist[1].id %>"><img class="card-img-top" src="<%= playlist[1].images[0].url%>" alt="<%=playlist[1].name %>"></a>
                           <div class="card-body">
                             <p class="card-text"><b> <%= playlist[1].name %></b></p>
