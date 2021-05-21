@@ -6,16 +6,7 @@ const constants = {
     wordCount: { Testing: 1, is: 2, important: 2, it: 1, seriously: 1 },
     wordCloudCount: [['is', 2], ['important', 2], ['Testing', 1], ['it', 1], ['seriously', 1]],
     errorList: ["Testing", "is", "important", "until", 1, 2, "it", "breaks"],
-    summarizedFeatures: {
-        acousticness: '0.524',
-        danceability: '0.512',
-        energy: '0.441',
-        instrumentalness: '0.338',
-        liveness: '0.179',
-        speechiness: '0.070',
-        tempo: '127.162',
-        valence: '0.436'
-    }
+    summarizedFeatures: {"acousticness":"0.515","danceability":"0.509","energy":"0.448","instrumentalness":"0.331","liveness":"0.190","speechiness":"0.071","tempo":"127.642","valence":"0.432"}
 }
 
 
