@@ -1,9 +1,42 @@
-<ul class="list-group">
-
-<% tracks.forEach((track) =>{ %>
-    <li class="list-group-item"><%=track.name %> - tempo: <%=track.features.tempo%> </li>
-<% }) %>
-
-<%= tracks %>
-</ul>
-
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Top 5 Tracks for each feature</h1>
+  </section>
+<div class="container">
+    <ul class="list-group">
+        <% Object.entries(features).forEach((feature)=>{ %>
+            <li class="list-group-item">
+                <table class="table" style="table-layout: fixed">
+                    <h4>
+                        <%= feature[0] %>
+                    </h4>
+                    <th>Name</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th><%= feature[0] %></th> 
+                    <% Object.entries(feature[1]).forEach((track)=>{ %>
+                        <tr>
+                            <td>
+                                <a href="/track/<%= track[1].id %>">
+                                    <%= track[1].name %>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/artist/<%= track[1].artists[0].id %>">
+                                    <%= track[1].artists[0].name %>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/album/<%= track[1].album.id %>">
+                                    <%= track[1].album.name %>
+                                </a>
+                            </td>
+                            <td><%= track[1].features[feature[0]] %></td>
+                        </tr>
+    
+                        <% }) %>
+                </table>
+            </li>
+            <% }) %>
+    </ul>
+</div>

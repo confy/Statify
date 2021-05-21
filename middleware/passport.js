@@ -15,11 +15,9 @@ strategy =  new SpotifyStrategy(
   },
 
   function (accessToken, refreshToken, expires_in, profile, done) {
-    console.log(accessToken, refreshToken)
     // asynchronous verification, for effect...
     process.nextTick(function () {
       userController.findOrCreate(profile, accessToken, refreshToken)
-      console.log(profile)
       return done(null, profile);
     });
   }

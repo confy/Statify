@@ -38,10 +38,11 @@ const dataController = {
         if (number < 1 | !(dataController.features.includes(feature))) {
             throw new RangeError
         }
-        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).splice(0, number)
+        return tracks.sort((a, b) => a.features[feature] < b.features[feature] ? 1 : -1).slice(0, number)
     },
 
     getTopTracksAllFeatures: (tracks, number) => {
+        let curr_tracks = tracks
         if (typeof tracks !== 'object' | typeof number !== 'number') {
             throw new TypeError
         }
@@ -51,7 +52,7 @@ const dataController = {
         }
         sortedTracks = {}
         dataController.features.forEach((feature) => {
-            sortedTracks[feature] = dataController.getTopTracksWithFeature(tracks, feature, number)
+            sortedTracks[feature] = dataController.getTopTracksWithFeature(curr_tracks, feature, number)
         })
         return sortedTracks
     },

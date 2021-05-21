@@ -23,6 +23,13 @@ const userController = {
             user[key][i].features = features[i]
         }
     },
+    addField: (id, items, key) => {
+        let user = userController.getUserById(id)
+        if (user === null) {
+            return null
+        }
+        user[key] = items
+    },
     addSummaryTrackStats: (id) => {
         let user = userController.getUserById(id)
         if (user === null) {
@@ -36,7 +43,6 @@ const userController = {
             return null
         }
         let output = user.artists.map(artist => artist.genres)
-        console.log(output)
         return output.flat(4)        
     }
 }
