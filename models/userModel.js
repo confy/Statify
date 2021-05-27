@@ -11,6 +11,7 @@ const userModel = {
         }
         return null
     },
+
     createUser: (user, accessToken, refreshToken) => {
         users[user.id] = {
             id: user.id,

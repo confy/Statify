@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 const passport = require("../middleware/passport");
 
-
 router.get('/spotify', passport.authenticate('spotify', {
     scope: ['user-read-private', 'user-read-email', 'user-library-read', 'user-read-recently-played', 'user-top-read'],
     showDialog: true
 }));
-
 
 router.get(
     '/spotify/callback',
@@ -17,7 +15,6 @@ router.get(
         res.redirect('/profile');
     }
 );
-
 
 // logout
 router.get("/logout", (req, res) => {

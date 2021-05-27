@@ -4,9 +4,6 @@ const passport = require("passport");
 
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
-
-
-
 strategy =  new SpotifyStrategy(
   {
     clientID: process.env.CLIENT_ID,
@@ -22,6 +19,7 @@ strategy =  new SpotifyStrategy(
     });
   }
 )
+
 passport.use(strategy);
 
 passport.serializeUser(function (user, done) {
