@@ -1,7 +1,6 @@
 const users = require("../database").users;
 const {flag, code, name, countries} = require('country-emoji');
 
-
 const userModel = {
     findUserByID: (id) => {
         for (let user in users) {
