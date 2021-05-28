@@ -1,19 +1,23 @@
-<section class="jumbotron text-center">
+<section class="section-container text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Top 5 Tracks for each feature</h1>
   </section>
 <div class="container">
-    <ul class="list-group">
+    <ul class="list-container">
         <% Object.entries(features).forEach((feature)=>{ %>
-            <li class="list-group-item">
-                <table class="table" style="table-layout: fixed">
+            <li class="list-container-item">
+                <table class="table table-bordered" style="table-layout: fixed">
                     <h4>
                         <%= feature[0] %>
                     </h4>
-                    <th>Name</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th><%= feature[0] %></th> 
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Artist</th>
+                            <th>Album</th>
+                            <th><%= feature[0] %></th>
+                        </tr>
+                    </thead>
                     <% Object.entries(feature[1]).forEach((track)=>{ %>
                         <tr>
                             <td>

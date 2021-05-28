@@ -49,9 +49,11 @@
 body {
     --text-color: #222;
     --primary-color: #92a8d1;
-    --secondary-color: #aac4f3;
+    --secondary-color: #E6EAF0;
     --progress-bar: #4170c8;
     --progress: #92a8d1;
+    --border-color: #E6EAF0;
+    --navbar-color: #2b323d;
     
 }
 
@@ -61,6 +63,23 @@ body.dark-theme {
     --secondary-color: #222;
     --progress-bar: #454545;
     --progress: #343434;
+    --border-color: #222222;
+    --navbar-color: #121212;
+}
+
+table.table-bordered{
+    border:1px solid var(--border-color);
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid var(--border-color)
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid var(--border-color)
+}
+
+nav {
+    background-color: var(--navbar-color)
 }
 
 /* secondary colors */
@@ -104,6 +123,7 @@ div.progress-bar {
 }
 
 .list-container {
+    list-style-type: none;
     position: relative;
     display: block;
     padding: .75rem 1.25rem;

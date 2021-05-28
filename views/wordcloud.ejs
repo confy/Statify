@@ -15,6 +15,11 @@
     <script>
         let clientWordCounts = <%- JSON.stringify(wordCounts) %>;
         let wordCloudElem = document.getElementById("wordcloud")
+        if (currentTheme == "dark") {
+            let wordCloudColor = 'random-light'
+        } else if (currentTheme == "light") {
+            let wordCloudColor = 'random-dark'
+        }
         WordCloud(wordCloudElem, {
             list: clientWordCounts,
             gridSize: Math.round(16 * wordCloudElem.offsetWidth / 1024),
@@ -25,9 +30,13 @@
         });
     </script>
 
-    <table class="table table-light">
-        <th>Genre</th>
-        <th>Count</th>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Genre</th>
+                <th>Count</th>
+            </tr>
+        </thead>
         <% wordCounts.forEach((word)=>{ %>
             <tr>
                 <td>

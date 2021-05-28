@@ -31,8 +31,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 const indexRoute = require("./routes/indexRoute");
 const authRoute = require("./routes/authRoute");
-app.use("/", indexRoute)
 app.use("/auth", authRoute)
+app.use("/", indexRoute)
+
 app.listen(process.env.PORT, function() {
     console.log(
         `Server running. Visit: http://localhost:${process.env.PORT} in your browser 🎵`

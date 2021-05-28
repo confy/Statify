@@ -187,8 +187,8 @@ router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
     res.render('wordcloud', {wordCounts: wordCloudList})
 })
 
-router.get('/profile/sort', ensureAuthenticated, function (req, res) {
-    res.render('table')
+router.get('*', function (req, res) {
+    res.status(404).render('404')
 })
 
 module.exports = router
