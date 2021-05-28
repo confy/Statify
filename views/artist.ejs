@@ -8,17 +8,17 @@
                     <%= artist.name %>
                 </h1>
                 <ul class="list-group">
-                    <li class="list-container list-primary lead text-muted">
+                    <li class="list-container lead text-muted">
                         <%= artist.genres %>
                     </li>
-                    <li class="list-container list-primary lead text-muted">Followers: <%= artist.followers.total %>
+                    <li class="list-container lead text-muted">Followers: <%= artist.followers.total %>
                     </li>
-                    <li class="list-container list-primary lead text-muted">Popularity: <%= artist.popularity %>
+                    <li class="list-container lead text-muted">Popularity: <%= artist.popularity %>
                     </li>
                 </ul>
 </section>
 <div class="card-body">
-    <table class="table table-light" id="artistTopTracks">
+    <table class="table table-bordered" id="artistTopTracks">
         <thead>
             <tr>
                 <th>Rank</th>

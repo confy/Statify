@@ -1,11 +1,6 @@
 const userController = require('../controllers/userController');
-
 const passport = require("passport");
-
 const SpotifyStrategy = require('passport-spotify').Strategy;
-
-
-
 
 strategy =  new SpotifyStrategy(
   {
@@ -22,6 +17,7 @@ strategy =  new SpotifyStrategy(
     });
   }
 )
+
 passport.use(strategy);
 
 passport.serializeUser(function (user, done) {

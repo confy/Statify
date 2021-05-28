@@ -5,6 +5,7 @@ module.exports = {
         }
         res.redirect("/auth/spotify");
     },
+
     forwardAuthenticated: function(req, res, next) {
         if (!req.isAuthenticated()) {
             return next();
