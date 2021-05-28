@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style="padding: 1%;">
         <a class="navbar-brand" href="/">Statify</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,48 +21,53 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/auth/spotify">Login</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile/artists">Artists</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile/tracks">Tracks</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile/top_features">Features</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile/playlists">Playlists</a>
-                </li>
-                <li class="nav-item nav-font">
-                    <a class="nav-link" href="/profile/wordcloud">Wordcloud</a>
-                </li>
-                
-                <!-- Some styling issues with dropdown, need to restyle if you want to use -->
-                <!-- <li class="nav-item dropdown nav-font">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> -->
+            <% if (typeof(user.name)=="undefined" ) { %>
+                <ul class="navbar-nav ml-auto">
 
-            </ul>
-            <!-- <form class="form-inline my-2 my-lg-0"> -->
-                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-            <button class="btn-toggle btn btn-outline-success my-2 my-sm-0">Change Theme</button>
-            <!-- </form> -->
+                    <li class="nav-item nav-font">
+                        <a class="nav-link" href="/auth/spotify">Login</a>
+                    </li>
+                </ul>
+                <% } else { %>
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile/artists">Artists</a>
+                        </li>
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile/tracks">Tracks</a>
+                        </li>
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile/playlists">Playlists</a>
+                        </li>
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile/top_features">Features</a>
+                        </li>
+                        <li class="nav-item nav-font">
+                            <a class="nav-link" href="/profile/wordcloud">Wordcloud</a>
+                        </li>
+                        <button class="btn-toggle btn btn-outline-primary my-2 my-sm-0">Change Theme</button>
+
+                    </ul>
+                    <ul class="navbar-right">
+                        <div style="display: inline; padding: 10px;">
+                            <img src="<%= user.profilePic.value %>" alt="profile pic"
+                                class="nav-item image-fluid rounded" style="height: 40px; display: inline;">
+                            <p style="display: inline; margin: 0; color:#898989;">
+                                <%=user.name%>
+                            </p>
+                            <a href="/auth/logout" style="margin: 0;">Logout</a>
+                        </div>
+                    </ul>
+                    <% } %>
+
+                        </ul>
+                        <!-- <form class="form-inline my-2 my-lg-0"> -->
+                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                        <!-- </form> -->
         </div>
     </nav>
     <script src="/theme_change.js"></script>
@@ -80,4 +85,5 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

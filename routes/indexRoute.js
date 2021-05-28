@@ -13,7 +13,13 @@ const spotifyApi = new SpotifyWebApi({
 module.exports = router;
 
 router.get('/', function (req, res) {
-    res.render('homepage')
+    if (typeof req.user != 'undefined') {
+        res.render('homepage', {user: req.user})
+    } else {
+        let dummyUser = {}
+        res.render('homepage', { user: dummyUser })
+    }
+
 })
 
 router.get('/profile', ensureAuthenticated, function (req, res) {
@@ -66,7 +72,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
 })
 
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
-    res.render('artists', { artists: req.user.artists })
+    res.render('artists', { user: req.user, artists: req.user.artists })
 })
 
 router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
@@ -85,7 +91,7 @@ router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
             return data.body
         })
     Promise.all([artistInfo, artistTopTracks, artistAlbums]).then((data) => {
-        res.render('artist', { artist: data[0], artistTopTracks: data[1].tracks, artistAlbums: data[2].items })
+        res.render('artist', { user: req.user, artist: data[0], artistTopTracks: data[1].tracks, artistAlbums: data[2].items })
 
     })
 })
@@ -105,24 +111,24 @@ router.get('/track/:trackID', ensureAuthenticated, function (req, res) {
         });
     Promise.all([trackInfo, trackFeatures]).then((data) => {
         data['1'].key = dataController.getSongKey(data['1'].key)
-        res.render('track', { trackInfo: data['0'], trackFeatures: data['1'] })
+        res.render('track', { user: req.user, trackInfo: data['0'], trackFeatures: data['1'] })
 
     })
 })
 
 router.get('/profile/tracks', ensureAuthenticated, function (req, res) {
-    res.render('tracks', { tracks: req.user.tracks })
+    res.render('tracks', { user: req.user, tracks: req.user.tracks })
 
 })
 
 router.get('/profile/top_features', ensureAuthenticated, function (req, res) {
     let sorted_tracks = dataController.getTopTracksAllFeatures(req.user.tracks, 5)
-    res.render('topFeatures', {features: sorted_tracks})
+    res.render('topFeatures', { user: req.user, features: sorted_tracks })
     //res.render('topFeatures', {tracks: tracks})
 })
 
 router.get('/profile/playlists', ensureAuthenticated, function (req, res) {
-    res.render('playlists', { playlists: req.user.playlists })
+    res.render('playlists', { user: req.user, playlists: req.user.playlists })
 })
 
 router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
@@ -149,7 +155,7 @@ router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
                 return item
             })
             summary = dataController.avgTrackFeatures(playlistTracks)
-            res.render('playlist', { playlistInfo: playlistInfo, playlist: playlistTracks, summary: summary })
+            res.render('playlist', { user: req.user, playlistInfo: playlistInfo, playlist: playlistTracks, summary: summary })
         })
 
 })
@@ -175,7 +181,7 @@ router.get('/album/:albumID', ensureAuthenticated, function (req, res) {
             })
 
             summary = dataController.avgTrackFeatures(album.tracks)
-            res.render('album', { album: album, summary: summary })
+            res.render('album', { user: req.user, album: album, summary: summary })
         })
 
 })
@@ -184,7 +190,7 @@ router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
     userGenres = userController.getGenresList(req.user.id)
     wordCount = dataController.countOccurences(userGenres)
     wordCloudList = dataController.convertCountForWordcloud(wordCount)
-    res.render('wordcloud', {wordCounts: wordCloudList})
+    res.render('wordcloud', { user: req.user, wordCounts: wordCloudList })
 })
 
 router.get('*', function (req, res) {
