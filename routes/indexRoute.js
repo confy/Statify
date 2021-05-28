@@ -14,7 +14,7 @@ module.exports = router;
 
 router.get('/', function (req, res) {
     if (typeof req.user != 'undefined') {
-        res.render('homepage', {user: req.user})
+        res.render('homepage', { user: req.user })
     } else {
         let dummyUser = {}
         res.render('homepage', { user: dummyUser })
@@ -194,7 +194,12 @@ router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
 })
 
 router.get('*', function (req, res) {
-    res.status(404).render('404')
+    if (typeof req.user != 'undefined') {
+        res.status(404).render('404', { user: req.user })
+    } else {
+        let dummyUser = {}
+        res.status(404).render('404', {user: dummyUser})
+    }
 })
 
 module.exports = router
