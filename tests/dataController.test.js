@@ -9,8 +9,6 @@ const constants = {
     summarizedFeatures: {"acousticness":"0.515","danceability":"0.509","energy":"0.448","instrumentalness":"0.331","liveness":"0.190","speechiness":"0.071","tempo":"127.642","valence":"0.432"}
 }
 
-
-
 // Count Occurrences
 test("Count occurences of a list of strings", () => {
     expect(dataController.countOccurences(constants.wordList)).toEqual(constants.wordCount)

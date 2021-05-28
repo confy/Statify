@@ -1,16 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
-
 const { ensureAuthenticated } = require("../middleware/checkAuth");
 const userController = require("../controllers/userController")
 const dataController = require("../controllers/dataController")
-
-
-
 const SpotifyWebApi = require('spotify-web-api-node');
-
-
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -18,7 +11,6 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 module.exports = router;
-
 
 router.get('/', function (req, res) {
     res.render('homepage')
@@ -41,6 +33,7 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
         }, function (err) {
             console.log('Something went wrong fetching artist data!', err);
         })
+
     spotifyApi.getUserPlaylists(req.user.id, {
         "limit": 50
     }).then(function (data) {
@@ -75,7 +68,6 @@ router.get('/profile', ensureAuthenticated, function (req, res) {
 router.get('/profile/artists', ensureAuthenticated, function (req, res) {
     res.render('artists', { artists: req.user.artists })
 })
-
 
 router.get('/artist/:artistid', ensureAuthenticated, function (req, res) {
     spotifyApi.setAccessToken(req.user.accessToken)
@@ -140,6 +132,7 @@ router.get('/playlist/:playlistID', ensureAuthenticated, function (req, res) {
         .then(function (data) {
             playlistInfo = data.body
         })
+
     spotifyApi.getPlaylistTracks(req.params.playlistID, { limit: 100 })
         .then(function (data) {
             playlist = data.body.items
@@ -193,7 +186,9 @@ router.get('/profile/wordcloud', ensureAuthenticated, function (req, res) {
     wordCloudList = dataController.convertCountForWordcloud(wordCount)
     res.render('wordcloud', {wordCounts: wordCloudList})
 })
+
 router.get('/profile/sort', ensureAuthenticated, function (req, res) {
     res.render('table')
 })
+
 module.exports = router

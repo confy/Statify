@@ -17,6 +17,7 @@ const dataController = {
         })
         return output
     },
+
     convertCountForWordcloud: (countObj) => {
         const output = []
         Object.entries(countObj).forEach((word) => {
