@@ -6,7 +6,7 @@ strategy =  new SpotifyStrategy(
   {
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'http://localhost:8080/auth/spotify/callback',
+    callbackURL: process.env.CALLBACK_URL
   },
 
   function (accessToken, refreshToken, expires_in, profile, done) {
