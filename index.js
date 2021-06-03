@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
+var MemoryStore = require('memorystore')(session)
 const ejsLayouts = require("express-ejs-layouts");
 const app = express();
 
@@ -17,6 +18,9 @@ app.use(
         secret: process.env.SESH_SECRET,
         resave: false,
         saveUninitialized: false,
+        store: new MemoryStore({
+            checkPeriod: 60 * 60 * 60
+        }),
         cookie: {
             httpOnly: true,
             secure: false,
