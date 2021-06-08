@@ -12,7 +12,9 @@ strategy =  new SpotifyStrategy(
   function (accessToken, refreshToken, expires_in, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
+      console.log(profile, accessToken, refreshToken)
       userController.findOrCreate(profile, accessToken, refreshToken)
+      console.log('Finishing passport login')
       return done(null, profile);
     });
   }
@@ -21,6 +23,7 @@ strategy =  new SpotifyStrategy(
 passport.use(strategy);
 
 passport.serializeUser(function (user, done) {
+  console.log('Serializing')
   done(null, user.id);
 });
 

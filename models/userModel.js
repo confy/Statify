@@ -12,6 +12,7 @@ const userModel = {
     },
 
     createUser: (user, accessToken, refreshToken) => {
+        console.log('Creating User')
         users[user.id] = {
             id: user.id,
             country: name(user.country),
@@ -24,6 +25,8 @@ const userModel = {
             refreshToken: refreshToken
 
         }
+        console.log('Created')
+        console.log(users[user.id])
         return users[user.id]
     }
 }

@@ -6,6 +6,7 @@ const userController = {
     findOrCreate: (id, accessToken, refreshToken) => {
         let user = userModel.findUserByID(id)
         if (user) {
+            console.log('Found Existing User')
             return user
         }
         return userModel.createUser(id, accessToken, refreshToken)
