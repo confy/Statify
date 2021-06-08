@@ -21,6 +21,7 @@ app.use(
         store: new MemoryStore({
             checkPeriod: 60 * 60 * 60
         }),
+        proxy: true,
         cookie: {
             httpOnly: true,
             secure: false,
@@ -33,6 +34,7 @@ app.use(
 const passport = require("./middleware/passport")
 app.use(passport.initialize());
 app.use(passport.session());
+app.set('trust proxy', true)
 const indexRoute = require("./routes/indexRoute");
 const authRoute = require("./routes/authRoute");
 app.use("/auth", authRoute)
