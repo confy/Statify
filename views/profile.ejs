@@ -8,7 +8,7 @@
                     <div class="container">
                         <div class="profilepagebodyimg container">
                             <!-- If the user has a profile picture display it -->
-                            <% if (user.profilePic) { %>
+                            <% if (typeof user.profilePic != 'undefined') { %>
                                 <img src="<%=user.profilePic.value%>" alt="<%=user.name%>">
 
                                 <!-- Otherwise display a placeholder image. -->

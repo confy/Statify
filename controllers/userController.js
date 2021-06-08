@@ -19,9 +19,10 @@ const userController = {
     },
 
     bindTrackFeatures: (id, features, key) => {
+        if (features.length <= 1) return
         let user = userController.getUserById(id)
         for (let i = 0; i < features.length; i++) {
-            user[key][i].features = features[i]
+            user[key][i]["features"] = features[i]
         }
     },
 
